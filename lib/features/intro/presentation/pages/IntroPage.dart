@@ -14,6 +14,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/intro_bloc.dart';
 import '../widgets/my_widget.dart';
 import 'dart:math';
+
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
 
@@ -22,6 +23,11 @@ class IntroPage extends StatefulWidget {
 }
 
 class _IntroPageState extends State<IntroPage> {
+   final _formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,51 +59,84 @@ class _IntroPageState extends State<IntroPage> {
                       bottom: 6.h,
                       right: 10.w,
                       left: 10.w,
-                      child: Column(
-                        children: [
-                          MyTextField(
-                              hintText: 'Email',
-                              icon: FontAwesomeIcons.person,
-                              obscureText: false),
-                          SizedBox(
-                            height: 2.h,
-                          ),
-                          MyTextField(
-                              hintText: 'Password',
-                              icon: FontAwesomeIcons.key,
-                              obscureText: true),
-                          Align(
-                            alignment: Alignment.centerRight,
-                            child: Text(
-                              'forget Password',
-                              style: TextStyle(
-                                color: Colors.lightBlue,
-                                fontFamily: 'Dongle',
-                                fontSize: 18.sp,
-                                fontWeight: FontWeight.bold,
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            MyTextField(
+                                controller: emailController,
+                                hintText: 'Email',
+                                icon: FontAwesomeIcons.person,
+                                obscureText: false, context: context),
+                            SizedBox(
+                              height: 2.h,
+                            ),
+                            MyTextField(
+                                controller: passwordController,
+                                hintText: 'Password',
+                                icon: FontAwesomeIcons.key,
+                                obscureText: true, context: context),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                'forget Password',
+                                style: TextStyle(
+                                  color: Colors.lightBlue,
+                                  fontFamily: 'Dongle',
+                                  fontSize: 18.sp,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                          SizedBox(
-                            height: 2.h,
-                          ),
-                          LoginButton(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) =>
-                                      MultiBlocProvider(providers: [
+                            SizedBox(
+                              height: 2.h,
+                            ),
+                            LoginButton(onTap: () {
+                             if(_formKey.currentState!.validate()){
+                                    if (emailController.text == 'admin@gmail.com' &&
+                                  passwordController.text == "20092001") {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                    builder: (context) => MultiBlocProvider(
+                                      providers: [
                                         BlocProvider(
                                             create: (context) => IntroBloc()),
                                         BlocProvider(
                                             create: (context) =>
                                                 TrendingMovieBloc()),
-                                        BlocProvider(create: (context) => PopularTvBloc()),
-                                        BlocProvider(create: (context) => TopRatedMovieBloc()),
-                                        BlocProvider(create: (context) => DetailsBloc(),)
-                                      ], child: HomePage(welcomeImage: state.results[Random().nextInt(state.results.length)].backdropPath,))));
-                            },
-                          ),
-                        ],
+                                        BlocProvider(
+                                            create: (context) => PopularTvBloc()),
+                                        BlocProvider(
+                                            create: (context) =>
+                                                TopRatedMovieBloc()),
+                                        BlocProvider(
+                                          create: (context) => DetailsBloc(),
+                                        )
+                                      ],
+                                      child: HomePage(
+                                        welcomeImage: state
+                                            .results[Random()
+                                                .nextInt(state.results.length)]
+                                            .backdropPath,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Invalid ')),
+                                );
+                              }
+                             }else{
+                                 ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('Please fill input')),
+                                );
+                             }
+                            }),
+                          ],
+                        ),
                       )),
                 ],
               );

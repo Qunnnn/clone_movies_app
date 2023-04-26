@@ -4,19 +4,27 @@ import 'package:sizer/sizer.dart';
 //text_field_widget
 Container MyTextField(
     {required String hintText,
+    required TextEditingController controller,
     required IconData icon,
-    required bool obscureText}) {
+    required bool obscureText,
+    required BuildContext context}) {
   return Container(
-    height: 8.h,
     decoration: BoxDecoration(
         border: Border.all(color: Colors.black),
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10)),
+        borderRadius: BorderRadius.circular(10), ),
     child: Center(
       child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 2.w),
-        child: TextField(
+        child: TextFormField(
+          controller: controller,
           obscureText: obscureText,
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter your ${hintText.toLowerCase()}';
+            }
+            return null;
+          },
           decoration: InputDecoration(
             border: InputBorder.none,
             fillColor: Colors.white,
