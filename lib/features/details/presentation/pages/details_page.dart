@@ -31,7 +31,7 @@ class DetailsPage extends StatelessWidget {
                     top: 0,
                     left: 0,
                     right: 0,
-                    bottom: 55.h,
+                    bottom: 60. h,
                     child: SizedBox(
                       width: double.infinity,
                       child: CachedNetworkImage(
