@@ -5,6 +5,7 @@ import '../bloc/cast_bloc.dart';
 import '../bloc/cast_state.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class CastWidget extends StatelessWidget {
   const CastWidget({super.key});
@@ -45,14 +46,14 @@ class CastWidget extends StatelessWidget {
                             left: 0,
                             right: 0,
                             child: ClipRRect(
-                              borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(20),
-                                  topRight: Radius.circular(20)),
-                              child: Image.network(
-                                '$baseUrlImage${state.casts[index].profilePath}',
-                                fit: BoxFit.fill,
-                              ),
-                            )),
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20),
+                                    topRight: Radius.circular(20)),
+                                child: CachedNetworkImage(
+                                  imageUrl:
+                                      '$baseUrlImage${state.casts[index].profilePath}',
+                                  fit: BoxFit.fill,
+                                ))),
                         Positioned(
                             bottom: 3.h,
                             left: 3.w,
