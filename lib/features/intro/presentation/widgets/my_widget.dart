@@ -2,46 +2,44 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
 //text_field_widget
-Container MyTextField(
+Widget MyTextField(
     {required String hintText,
     required TextEditingController controller,
     required IconData icon,
     required bool obscureText,
     required BuildContext context}) {
-  return Container(
-    decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10), ),
-    child: Center(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 2.w),
-        child: TextFormField(
-          controller: controller,
-          obscureText: obscureText,
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Please enter your ${hintText.toLowerCase()}';
-            }
-            return null;
-          },
-          decoration: InputDecoration(
-            border: InputBorder.none,
-            fillColor: Colors.white,
-            hintText: hintText,
-            hintStyle: TextStyle(
-              fontFamily: 'Dongle',
-              fontSize: 18.sp,
-              fontWeight: FontWeight.bold,
-            ),
-            filled: true,
-            icon: Icon(
-              icon,
-              color: Colors.black,
-              size: 3.h,
-            ),
-          ),
+  return TextFormField(
+    controller: controller,
+    obscureText: obscureText,
+    validator: (value) {
+      if (value == null || value.isEmpty) {
+        return 'Please enter your ${hintText.toLowerCase()}';
+      }
+      return null;
+    },
+    decoration: InputDecoration(
+      border: OutlineInputBorder(
+        borderSide: const BorderSide(
+          color: Colors.black,
         ),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: const BorderSide(color: Colors.black),
+        borderRadius: BorderRadius.circular(15),
+      ),
+      fillColor: Colors.white,
+      hintText: hintText,
+      hintStyle: TextStyle(
+        fontFamily: 'Dongle',
+        fontSize: 15.sp,
+        fontWeight: FontWeight.bold,
+      ),
+      filled: true,
+      prefixIcon: Icon(
+        icon,
+        color: Colors.black,
+        size: 3.h,
       ),
     ),
   );

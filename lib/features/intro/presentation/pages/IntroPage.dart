@@ -128,11 +128,6 @@ class _IntroPageState extends State<IntroPage> {
                                       content: Text('Invalid ')),
                                 );
                               }
-                             }else{
-                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text('Please fill input')),
-                                );
                              }
                             }),
                           ],
