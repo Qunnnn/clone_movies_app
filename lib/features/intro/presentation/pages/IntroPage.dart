@@ -1,9 +1,7 @@
 import '../../../../constants/assest_path.dart';
 import '../../../details/presentation/bloc/details_bloc.dart';
-import '../../../home/presentation/bloc/popular_tv_bloc.dart';
-import '../../../home/presentation/bloc/top_rated_movie_bloc.dart';
-import '../../../home/presentation/bloc/trending_movie_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import '../../../home/presentation/bloc/home_bloc_injection.dart';
 import '../../../home/presentation/pages/home_page.dart';
 import 'background.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +10,7 @@ import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/intro_bloc.dart';
-import '../widgets/my_widget.dart';
+import '../widgets/intro_widget.dart';
 import 'dart:math';
 
 class IntroPage extends StatefulWidget {

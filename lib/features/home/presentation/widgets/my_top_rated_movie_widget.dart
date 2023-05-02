@@ -1,12 +1,10 @@
+import 'package:clone_movies_app/features/home/presentation/widgets/home_widgets.dart';
 import '../../../../constants/app_constants.dart';
-import '../bloc/top_rated_movie_bloc.dart';
-import '../bloc/top_rated_movie_event.dart';
-import '../bloc/top_rated_movie_state.dart';
-import 'movie_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import '../bloc/home_bloc_injection.dart';
 
 class TopRatedMovie extends StatefulWidget {
   const TopRatedMovie({super.key});
@@ -53,7 +51,7 @@ class _TopRatedMovieState extends State<TopRatedMovie> {
               );
             }
             if (state is LoadedTopRatedState) {
-              return MovieList(list: state.movies);
+              return buildMovieListWidget(list: state.movies);
             }
             return Container();
           }),

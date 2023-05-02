@@ -1,12 +1,10 @@
+import 'package:clone_movies_app/features/home/presentation/widgets/home_widgets.dart';
 import '../../../../constants/app_constants.dart';
-import '../bloc/popular_tv_bloc.dart';
-import '../bloc/popular_tv_event.dart';
-import '../bloc/popular_tv_state.dart';
-import 'tv_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import '../bloc/home_bloc_injection.dart';
 
 class PopularTv extends StatefulWidget {
   const PopularTv({super.key});
@@ -53,7 +51,7 @@ class _PopularTvState extends State<PopularTv> {
               );
             }
             if (state is LoadedPopularTvState) {
-              return TvList(list: state.movies);
+              return buildTvListWidget(list: state.movies);
             }
             return Container();
           }),

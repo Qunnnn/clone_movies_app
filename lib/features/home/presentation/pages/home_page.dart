@@ -1,4 +1,4 @@
-import '../widgets/my_bottom_navbar.dart';
+import 'package:clone_movies_app/features/home/presentation/widgets/home_widgets.dart';
 import '../widgets/my_popular_tv_widget.dart';
 import '../widgets/my_top_rated_movie_widget.dart';
 import '../widgets/my_trending_movie_widget.dart';
@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const MyNavBar(),
+      bottomNavigationBar: buildNavBarWidget(),
       backgroundColor: Colors.black12,
       body: SafeArea(
         child: Column(
