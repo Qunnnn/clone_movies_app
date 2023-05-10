@@ -1,5 +1,5 @@
 import 'package:clone_movies_app/constants/app_constants.dart';
-
+import 'package:clone_movies_app/core/appBlocs/app_bloc_providers.dart';
 import '../../../../constants/assest_path.dart';
 import '../../../details/presentation/bloc/details_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -94,22 +94,8 @@ class _IntroPageState extends State<IntroPage> {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (context) => MultiBlocProvider(
-                                        providers: [
-                                          BlocProvider(
-                                              create: (context) => IntroBloc()),
-                                          BlocProvider(
-                                              create: (context) =>
-                                                  TrendingMovieBloc()),
-                                          BlocProvider(
-                                              create: (context) =>
-                                                  PopularTvBloc()),
-                                          BlocProvider(
-                                              create: (context) =>
-                                                  TopRatedMovieBloc()),
-                                          BlocProvider(
-                                            create: (context) => DetailsBloc(),
-                                          )
-                                        ],
+                                        providers:
+                                            AppBlocProviders.homeBlocProviders,
                                         child: HomePage(
                                           welcomeImage: state
                                               .results[Random().nextInt(
