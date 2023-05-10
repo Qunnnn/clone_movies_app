@@ -1,3 +1,4 @@
+import 'package:clone_movies_app/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -30,11 +31,7 @@ Widget MyTextField(
       ),
       fillColor: Colors.white,
       hintText: hintText,
-      hintStyle: TextStyle(
-        fontFamily: 'Dongle',
-        fontSize: 15.sp,
-        fontWeight: FontWeight.bold,
-      ),
+      hintStyle: hintStyle,
       filled: true,
       prefixIcon: Icon(
         icon,

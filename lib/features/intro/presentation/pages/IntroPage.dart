@@ -1,3 +1,5 @@
+import 'package:clone_movies_app/constants/app_constants.dart';
+
 import '../../../../constants/assest_path.dart';
 import '../../../details/presentation/bloc/details_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -21,10 +23,9 @@ class IntroPage extends StatefulWidget {
 }
 
 class _IntroPageState extends State<IntroPage> {
-   final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +66,8 @@ class _IntroPageState extends State<IntroPage> {
                                 controller: emailController,
                                 hintText: 'Email',
                                 icon: FontAwesomeIcons.person,
-                                obscureText: false, context: context),
+                                obscureText: false,
+                                context: context),
                             SizedBox(
                               height: 2.h,
                             ),
@@ -73,60 +75,56 @@ class _IntroPageState extends State<IntroPage> {
                                 controller: passwordController,
                                 hintText: 'Password',
                                 icon: FontAwesomeIcons.key,
-                                obscureText: true, context: context),
+                                obscureText: true,
+                                context: context),
                             Align(
                               alignment: Alignment.centerRight,
                               child: Text(
                                 'forget Password',
-                                style: TextStyle(
-                                  color: Colors.lightBlue,
-                                  fontFamily: 'Dongle',
-                                  fontSize: 18.sp,
-                                  fontWeight: FontWeight.bold,
-                                ),
+                                style: forgetPasswordStyle,
                               ),
                             ),
                             SizedBox(
                               height: 2.h,
                             ),
                             LoginButton(onTap: () {
-                             if(_formKey.currentState!.validate()){
-                                    if (emailController.text == 'admin@gmail.com' &&
-                                  passwordController.text == "20092001") {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                    builder: (context) => MultiBlocProvider(
-                                      providers: [
-                                        BlocProvider(
-                                            create: (context) => IntroBloc()),
-                                        BlocProvider(
-                                            create: (context) =>
-                                                TrendingMovieBloc()),
-                                        BlocProvider(
-                                            create: (context) => PopularTvBloc()),
-                                        BlocProvider(
-                                            create: (context) =>
-                                                TopRatedMovieBloc()),
-                                        BlocProvider(
-                                          create: (context) => DetailsBloc(),
-                                        )
-                                      ],
-                                      child: HomePage(
-                                        welcomeImage: state
-                                            .results[Random()
-                                                .nextInt(state.results.length)]
-                                            .backdropPath,
+                              if (_formKey.currentState!.validate()) {
+                                if (emailController.text == 'admin@gmail.com' &&
+                                    passwordController.text == "20092001") {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) => MultiBlocProvider(
+                                        providers: [
+                                          BlocProvider(
+                                              create: (context) => IntroBloc()),
+                                          BlocProvider(
+                                              create: (context) =>
+                                                  TrendingMovieBloc()),
+                                          BlocProvider(
+                                              create: (context) =>
+                                                  PopularTvBloc()),
+                                          BlocProvider(
+                                              create: (context) =>
+                                                  TopRatedMovieBloc()),
+                                          BlocProvider(
+                                            create: (context) => DetailsBloc(),
+                                          )
+                                        ],
+                                        child: HomePage(
+                                          welcomeImage: state
+                                              .results[Random().nextInt(
+                                                  state.results.length)]
+                                              .backdropPath,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                      content: Text('Invalid ')),
-                                );
+                                  );
+                                } else {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    const SnackBar(content: Text('Invalid ')),
+                                  );
+                                }
                               }
-                             }
                             }),
                           ],
                         ),
