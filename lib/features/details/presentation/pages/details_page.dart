@@ -8,8 +8,26 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key});
+class DetailsPage extends StatefulWidget {
+  int id;
+  DetailsPage({super.key, required this.id});
+
+  @override
+  State<DetailsPage> createState() => _DetailsPageState();
+}
+
+class _DetailsPageState extends State<DetailsPage> {
+  late final DetailsBloc detailsBloc;
+  late final CastBloc castBloc;
+
+  @override
+  void initState() {
+    detailsBloc = BlocProvider.of<DetailsBloc>(context)
+      ..add(LoadDetailsEvent(id: widget.id));
+    castBloc = BlocProvider.of<CastBloc>(context)
+      ..add(LoadCastEvent(id: widget.id));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +49,7 @@ class DetailsPage extends StatelessWidget {
                     top: 0,
                     left: 0,
                     right: 0,
-                    bottom: 60. h,
+                    bottom: 60.h,
                     child: SizedBox(
                       width: double.infinity,
                       child: CachedNetworkImage(
@@ -93,19 +111,21 @@ class DetailsPage extends StatelessWidget {
                               textAlign: TextAlign.justify,
                               style: contentStyle,
                             ),
-                            RichText(
-                                text: TextSpan(
-                                    text: 'Status:  ',
-                                    style: topicStyle.copyWith(
-                                        color: Colors.black,
-                                        fontSize: 20.sp,
-                                        letterSpacing: -0.5),
-                                    children: [
-                                  TextSpan(
-                                    text: state.details.status.toString(),
-                                    style: contentStyle,
-                                  )
-                                ])),
+                            Row(
+                              children: [
+                                Text(
+                                  'Status: ',
+                                  style: topicStyle.copyWith(
+                                      color: Colors.black,
+                                      fontSize: 20.sp,
+                                      letterSpacing: -0.5),
+                                ),
+                                Text(
+                                  state.details.status,
+                                  style: contentStyle,
+                                ),
+                              ],
+                            ),
                             const CastWidget(),
                             SizedBox(
                               height: 3.h,

@@ -6,7 +6,10 @@ final topicStyle = TextStyle(
   fontWeight: FontWeight.bold,
   color: Colors.white,
 );
-
+final accountNameStyle = TextStyle(
+    color: Colors.white, fontSize: 20.sp, fontWeight: FontWeight.bold);
+final accountEmailStyle = TextStyle(
+    color: Colors.white, fontSize: 17.sp, fontWeight: FontWeight.w200);
 final hintStyle = TextStyle(
   fontSize: 15.sp,
   fontWeight: FontWeight.bold,

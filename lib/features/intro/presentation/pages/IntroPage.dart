@@ -22,6 +22,13 @@ class _IntroPageState extends State<IntroPage> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+  late final IntroBloc introBloc;
+
+  @override
+  void initState() {
+    introBloc = BlocProvider.of<IntroBloc>(context)..add(IntroEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,8 +98,8 @@ class _IntroPageState extends State<IntroPage> {
                                     MaterialPageRoute(
                                       builder: (context) => HomePage(
                                         welcomeImage: state
-                                            .results[Random().nextInt(
-                                                state.results.length)]
+                                            .results[Random()
+                                                .nextInt(state.results.length)]
                                             .backdropPath,
                                       ),
                                     ),
