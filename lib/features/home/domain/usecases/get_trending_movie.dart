@@ -1,7 +1,6 @@
 import '../../../../core/error/errors.dart';
-import '../entities/entity.dart';
-import '../repositories/trending_movie_repository.dart';
 import 'package:dartz/dartz.dart';
+import '../domain.dart';
 
 
 class GetTrendingMovie {

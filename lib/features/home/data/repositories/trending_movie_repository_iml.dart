@@ -1,9 +1,11 @@
 import '../../../../core/error/errors.dart';
 import '../../../../core/error/exceptions.dart';
-import '../datasources/trending_movie_remote_datasource.dart';
 import 'package:dartz/dartz.dart';
-import '../../domain/repositories/trending_movie_repository.dart';
-import '../models/trending_movie_model.dart';
+import '../../domain/domain.dart';
+import '../data.dart';
+
+
+
 
 class  TrendingMovieRepositoryIml implements TrendingMovieRepository {
   TrendingMovieRemoteDataSoure trendingMovieRemoteDataSoure;

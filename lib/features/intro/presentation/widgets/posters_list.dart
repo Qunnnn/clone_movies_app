@@ -7,7 +7,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 class PosterList extends StatefulWidget {
   final List<BackDropEntity> list;
   final int startIndex;
-  PosterList({super.key, required this.list, required this.startIndex});
+  const PosterList({super.key, required this.list, required this.startIndex});
 
   @override
   State<PosterList> createState() => _PosterListState();

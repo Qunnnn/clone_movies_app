@@ -16,7 +16,7 @@ class DetailsEntity extends Equatable {
   });
 
   factory DetailsEntity.empty() {
-    return DetailsEntity(
+    return const DetailsEntity(
       title: "",
       overview: "",
       status: "",

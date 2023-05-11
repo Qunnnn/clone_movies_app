@@ -46,7 +46,7 @@ class CastWidget extends StatelessWidget {
                             left: 0,
                             right: 0,
                             child: ClipRRect(
-                                borderRadius: BorderRadius.only(
+                                borderRadius: const BorderRadius.only(
                                     topLeft: Radius.circular(20),
                                     topRight: Radius.circular(20)),
                                 child: CachedNetworkImage(

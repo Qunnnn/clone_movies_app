@@ -1,9 +1,8 @@
 import '../../../../core/error/errors.dart';
 import '../../../../core/error/exceptions.dart';
-import '../datasources/popular_tv_remote_datasource.dart';
-import '../models/popular_tv_model.dart';
-import '../../domain/repositories/popular_tv_repo.dart';
 import 'package:dartz/dartz.dart';
+import '../../domain/domain.dart';
+import '../data.dart';
 
 class PopularTvRepoIml implements PopularTvRepo {
   PopularTvRemoteDataSoure popularTvRemoteDataSoure;

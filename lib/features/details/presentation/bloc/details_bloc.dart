@@ -3,7 +3,6 @@ import '../../data/datasources/details_remote_data_source.dart';
 import '../../data/repositories/details_repo_iml.dart';
 import '../../domain/usecases/get_details.dart';
 import 'package:equatable/equatable.dart';
-
 import '../../domain/entities/details_entity.dart';
 part 'details_event.dart';
 part 'details_state.dart';

@@ -1,9 +1,9 @@
 import '../../../../core/error/exceptions.dart';
 import '../../../../core/error/errors.dart';
-import '../../domain/entities/backdrop_entity.dart';
+import '../../domain/domain.dart';
 import 'package:dartz/dartz.dart';
-import '../../domain/repositories/intro_repository.dart';
-import '../datasources/remote_data_source.dart';
+import '../datasources/datasources.dart';
+
 
 class IntroRepositoryIml implements BackdropRepository{
   RemoteDataSource remoteDataSource;

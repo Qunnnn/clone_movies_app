@@ -1,4 +1,5 @@
-import '../../domain/entities/backdrop_entity.dart';
+
+import '../../domain/entities/entities.dart';
 class PosterModel extends BackDropEntity {
   final String backDropPath;
   const PosterModel({required this.backDropPath})

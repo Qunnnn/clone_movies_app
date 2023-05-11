@@ -1,9 +1,7 @@
 import 'package:bloc/bloc.dart';
-import '../../domain/entities/backdrop_entity.dart';
 import 'package:equatable/equatable.dart';
-import '../../data/datasources/remote_data_source.dart';
-import '../../data/repositories/intro_repository_iml.dart';
-import '../../domain/usecases/get_backdrop_intro.dart';
+import '../../data/data.dart';
+import '../../domain/domain.dart';
 part 'intro_event.dart';
 part 'intro_state.dart';
 

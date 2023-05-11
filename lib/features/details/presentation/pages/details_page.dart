@@ -1,6 +1,6 @@
 import '../../../../constants/app_constants.dart';
 import '../../../../constants/assest_path.dart';
-import '../bloc/details_bloc.dart';
+import '../bloc/bloc.dart';
 import '../widgets/my_cast_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

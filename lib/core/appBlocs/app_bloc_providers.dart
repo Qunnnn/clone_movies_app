@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../features/details/presentation/bloc/details_bloc.dart';
-import '../../features/home/presentation/bloc/home_bloc_injection.dart';
+import '../../features/home/presentation/bloc/bloc.dart';
 import '../../features/intro/presentation/bloc/intro_bloc.dart';
 
 class AppBlocProviders {

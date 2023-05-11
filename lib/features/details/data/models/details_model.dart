@@ -2,10 +2,15 @@
 import '../../domain/entities/details_entity.dart';
 
 class DetailsModel extends DetailsEntity {
+  @override
   final String title;
+  @override
   final String poster_path;
+  @override
   final String overview;
+  @override
   final String status;
+  @override
   final List<Genres> genres;
   
  const  DetailsModel({

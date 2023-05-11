@@ -9,7 +9,7 @@ abstract class TrendingMovieEvent extends Equatable {
 
 class LoadTrendingMovie extends TrendingMovieEvent {
   final String timeWindow;
-  LoadTrendingMovie({required this.timeWindow});
+  const LoadTrendingMovie({required this.timeWindow});
     @override
   List<Object> get props => [timeWindow];
 }

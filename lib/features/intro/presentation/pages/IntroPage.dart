@@ -1,18 +1,14 @@
 import 'package:clone_movies_app/constants/app_constants.dart';
-import 'package:clone_movies_app/core/appBlocs/app_bloc_providers.dart';
 import '../../../../constants/assest_path.dart';
-import '../../../details/presentation/bloc/details_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import '../../../home/presentation/bloc/home_bloc_injection.dart';
 import '../../../home/presentation/pages/home_page.dart';
+import '../presentation.dart';
 import 'background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../bloc/intro_bloc.dart';
-import '../widgets/intro_widget.dart';
 import 'dart:math';
 
 class IntroPage extends StatefulWidget {
@@ -91,17 +87,13 @@ class _IntroPageState extends State<IntroPage> {
                               if (_formKey.currentState!.validate()) {
                                 if (emailController.text == 'admin@gmail.com' &&
                                     passwordController.text == "20092001") {
-                                  Navigator.of(context).push(
+                                  Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                      builder: (context) => MultiBlocProvider(
-                                        providers:
-                                            AppBlocProviders.homeBlocProviders,
-                                        child: HomePage(
-                                          welcomeImage: state
-                                              .results[Random().nextInt(
-                                                  state.results.length)]
-                                              .backdropPath,
-                                        ),
+                                      builder: (context) => HomePage(
+                                        welcomeImage: state
+                                            .results[Random().nextInt(
+                                                state.results.length)]
+                                            .backdropPath,
                                       ),
                                     ),
                                   );

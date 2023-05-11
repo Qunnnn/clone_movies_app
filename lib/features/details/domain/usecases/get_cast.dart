@@ -1,7 +1,6 @@
-import '../entities/cast_entity.dart';
-import '../repositories/cast_repo.dart';
 import 'package:dartz/dartz.dart';
 import '../../../../core/error/errors.dart';
+import '../domain.dart';
 
 class GetCasts {
   final CastRepo castRepo;

@@ -1,8 +1,7 @@
 import '../../../../core/error/errors.dart';
-import '../entities/backdrop_entity.dart';
 import 'package:dartz/dartz.dart';
-import '../repositories/intro_repository.dart';
-
+import '../entities/entities.dart';
+import '../repositories/repositories.dart';
 class GetBackdropIntro {
   final BackdropRepository repository;
   GetBackdropIntro({required this.repository});

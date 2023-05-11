@@ -1,10 +1,10 @@
-import 'package:clone_movies_app/features/home/presentation/widgets/home_widgets.dart';
 import '../../../../constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import '../bloc/home_bloc_injection.dart';
+import '../bloc/bloc.dart';
+import 'widgets.dart';
 
 class PopularTv extends StatefulWidget {
   const PopularTv({super.key});

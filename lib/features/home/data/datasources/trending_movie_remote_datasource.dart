@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
-
 import '../../../../constants/api_path.dart';
 import '../../../../core/error/exceptions.dart';
 import '../models/trending_movie_model.dart';

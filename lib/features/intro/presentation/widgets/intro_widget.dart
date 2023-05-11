@@ -49,7 +49,7 @@ Container LoginButton({required Function()? onTap}) {
     width: 30.w,
     padding: EdgeInsets.zero,
     decoration:
-        BoxDecoration(borderRadius: BorderRadius.circular(20), boxShadow: [
+        BoxDecoration(borderRadius: BorderRadius.circular(20), boxShadow: const [
       BoxShadow(
         color: Colors.black,
         blurRadius: 0.5,

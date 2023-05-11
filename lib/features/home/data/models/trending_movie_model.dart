@@ -1,8 +1,11 @@
 import '../../domain/entities/entity.dart';
 
 class TrendingMovieModel extends Entity {
+  @override
   final int id;
+  @override
   final String posterPath;
+  @override
   final String title;
   final String realeaseDate;
 

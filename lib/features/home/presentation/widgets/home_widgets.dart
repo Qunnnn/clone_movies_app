@@ -1,18 +1,15 @@
 import '../../../../constants/app_constants.dart';
-import '../../../details/presentation/bloc/cast_bloc.dart';
-import '../../../details/presentation/bloc/cast_event.dart';
-import '../../../details/presentation/bloc/details_bloc.dart';
-import '../../../details/presentation/pages/details_page.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../constants/assest_path.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../domain/entities/entity.dart';
+import '../../../details/details.dart';
+import '../../domain/domain.dart';
+
 
 //MovieList
 ListView buildMovieListWidget({required List<dynamic> list}) {

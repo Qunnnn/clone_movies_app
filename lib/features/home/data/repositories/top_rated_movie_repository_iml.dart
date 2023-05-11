@@ -1,9 +1,8 @@
 import '../../../../core/error/errors.dart';
 import '../../../../core/error/exceptions.dart';
-import '../datasources/top_rated_movie_remote_datasource.dart';
-import '../models/top_rated_movie_model.dart';
-import '../../domain/repositories/top_rated_movie_repository.dart';
 import 'package:dartz/dartz.dart';
+import '../../domain/domain.dart';
+import '../data.dart';
 
 class TopRatedRepositoryIml implements TopRatedMovieRepository {
   TopRatedMovieRemoteDataSoure topRatedMovieRemoteDataSoure;
