@@ -1,3 +1,4 @@
+import 'package:clone_movies_app/service/local_notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import '../widgets/widgets.dart';
@@ -11,6 +12,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late final NotificationService _notificationService;
+  @override
+  void initState() {
+    _notificationService = NotificationService();
+    _notificationService.init();
+    _notificationService.showNotification(
+        id: 0, title: 'Welcome', body: 'Have a nice day!');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +63,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
-
 }
