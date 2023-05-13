@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
+
 class PosterList extends StatefulWidget {
   final List<BackDropEntity> list;
   final int startIndex;
@@ -22,23 +23,17 @@ class _PosterListState extends State<PosterList> {
       if (!_scrollController.position.atEdge) {
         _autoScroll();
       }
-      // adding to list
       WidgetsBinding.instance.addPostFrameCallback((_) {
         _autoScroll();
       });
     });
   }
 
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
   void _autoScroll() {
-    final endScrollPosition = _scrollController.position.maxScrollExtent;
-    _scrollController.animateTo(endScrollPosition,
-        duration: const Duration(seconds: 10), curve: Curves.linear);
+    if (_scrollController.hasClients) {
+      _scrollController.animateTo(_scrollController.position.maxScrollExtent,
+          duration: const Duration(seconds: 10), curve: Curves.linear);
+    }
   }
 
   @override
@@ -56,9 +51,12 @@ class _PosterListState extends State<PosterList> {
                       height: 35.h,
                       width: 18.w,
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: CachedNetworkImage(imageUrl:  "$baseUrlImage${widget.list[widget.startIndex + index].backdropPath}" , fit: BoxFit.fill,)
-                      ),
+                          borderRadius: BorderRadius.circular(15),
+                          child: CachedNetworkImage(
+                            imageUrl:
+                                "$baseUrlImage${widget.list[widget.startIndex + index].backdropPath}",
+                            fit: BoxFit.fill,
+                          )),
                     )))));
   }
 }

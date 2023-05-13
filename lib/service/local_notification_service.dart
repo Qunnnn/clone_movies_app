@@ -1,10 +1,13 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/timezone.dart' as tz;
+import 'package:timezone/data/latest_all.dart' as tz;
 
 class NotificationService {
   NotificationService();
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
   Future<void> init() async {
+    tz.initializeTimeZones();
     const AndroidInitializationSettings androidInitializationSettings =
         AndroidInitializationSettings('@drawable/ic_stat_movie_filter');
     DarwinInitializationSettings darwinInitializationSettings =
@@ -42,6 +45,30 @@ class NotificationService {
   }) async {
     final details = _notificationsDetails();
     await _flutterLocalNotificationsPlugin.show(id, title, body, details);
+  }
+
+  Future<void> scheduleDailyNotification({
+    required id,
+    required title,
+    required body,
+  }) async {
+    final details = _notificationsDetails();
+    await _flutterLocalNotificationsPlugin.zonedSchedule(
+        id, title, body, _nextInstanceOfTime(), details,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        matchDateTimeComponents: DateTimeComponents.time);
+  }
+
+  tz.TZDateTime _nextInstanceOfTime() {
+    final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
+    tz.TZDateTime scheduledDate =
+        tz.TZDateTime(tz.local, now.year, now.month, now.day, now.hour, 10);
+    if (scheduledDate.isBefore(now)) {
+      scheduledDate = scheduledDate.add(const Duration(days: 1));
+    }
+    return scheduledDate;
   }
 
   void onDidReceivelocalNotification(

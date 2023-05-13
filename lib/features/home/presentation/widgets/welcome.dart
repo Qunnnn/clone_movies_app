@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../constants/assest_path.dart';
+import '../../../../service/local_notification_service.dart';
 
 class Welcome extends StatelessWidget implements PreferredSizeWidget {
   String welcomImage;
@@ -12,6 +13,7 @@ class Welcome extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final NotificationService _notificationService = NotificationService();
     return SafeArea(
       child: Stack(children: [
         ShaderMask(
