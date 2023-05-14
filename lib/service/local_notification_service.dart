@@ -51,20 +51,29 @@ class NotificationService {
     required id,
     required title,
     required body,
+    required hour,
+    required minute,
   }) async {
     final details = _notificationsDetails();
+
     await _flutterLocalNotificationsPlugin.zonedSchedule(
-        id, title, body, _nextInstanceOfTime(), details,
+        id, title, body, _nextInstanceOfTime(hour, minute), details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         matchDateTimeComponents: DateTimeComponents.time);
   }
 
-  tz.TZDateTime _nextInstanceOfTime() {
-    final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
-    tz.TZDateTime scheduledDate =
-        tz.TZDateTime(tz.local, now.year, now.month, now.day, now.hour, 10);
+  tz.TZDateTime _nextInstanceOfTime(hour, minute) {
+    final tz.TZDateTime now =
+        tz.TZDateTime.now(tz.getLocation('Asia/Ho_Chi_Minh'));
+    tz.TZDateTime scheduledDate = tz.TZDateTime(
+        tz.getLocation('Asia/Ho_Chi_Minh'),
+        now.year,
+        now.month,
+        now.day,
+        hour,
+        minute);
     if (scheduledDate.isBefore(now)) {
       scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
@@ -72,9 +81,7 @@ class NotificationService {
   }
 
   void onDidReceivelocalNotification(
-      int id, String? title, String? body, String? payload) {
-    print('id: $id');
-  }
+      int id, String? title, String? body, String? payload) {}
 
   void onDidReceiveNotificationResponse(
       NotificationResponse notificationResponse) async {

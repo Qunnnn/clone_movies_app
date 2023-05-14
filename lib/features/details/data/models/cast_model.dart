@@ -2,11 +2,8 @@ import '../../domain/entities/cast_entity.dart';
 
 
 class CastModel extends CastEntity {
-  @override
   final String name;
-  @override
   final String profilePath;
-  @override
   final String character;
   const CastModel({
     required this.name,

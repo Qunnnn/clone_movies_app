@@ -1,3 +1,4 @@
+import 'package:clone_movies_app/features/home/presentation/pages/pages.dart';
 import 'package:clone_movies_app/features/intro/intro.dart';
 import '../../../../constants/app_constants.dart';
 import 'package:flutter/material.dart';
@@ -96,6 +97,18 @@ drawerWidget(BuildContext context) {
         const Divider(thickness: 0.5),
         reusableListTile(icon: FontAwesomeIcons.bell, title: 'Notifications'),
         const Divider(thickness: 0.5),
+        InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SchedulePage(),
+                ));
+          },
+          child: reusableListTile(
+              icon: FontAwesomeIcons.calendarCheck, title: 'Schedule'),
+        ),
+        const Divider(thickness: 0.5),
         reusableListTile(icon: FontAwesomeIcons.gear, title: 'Settings'),
         const Divider(thickness: 0.5),
         SizedBox(
@@ -104,12 +117,12 @@ drawerWidget(BuildContext context) {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: GestureDetector(
-            onTap: (){
+            onTap: () {
               Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                      builder: (context) => const IntroPage(),
-                                    ),
-                                  );
+                MaterialPageRoute(
+                  builder: (context) => const IntroPage(),
+                ),
+              );
             },
             child: Container(
               decoration: BoxDecoration(
@@ -232,3 +245,24 @@ SizedBox buildTitleWidget(String title) {
     ),
   );
 }
+
+//Digital Clock Widget
+  Container digitalClockWidget({required String time}) {
+    return Container(
+      height: 20.h,
+      width: 20.h,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black, width: 2),
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Center(
+        child: Text(
+          time,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 70.sp,
+              fontWeight: FontWeight.w700),
+        ),
+      ),
+    );
+  }
