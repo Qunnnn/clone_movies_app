@@ -47,6 +47,7 @@ class NotificationService {
     await _flutterLocalNotificationsPlugin.show(id, title, body, details);
   }
 
+//Schedule Daily Notification
   Future<void> scheduleDailyNotification({
     required id,
     required title,
@@ -57,14 +58,14 @@ class NotificationService {
     final details = _notificationsDetails();
 
     await _flutterLocalNotificationsPlugin.zonedSchedule(
-        id, title, body, _nextInstanceOfTime(hour, minute), details,
+        id, title, body, _nextInstanceOfDailyTime(hour, minute), details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         matchDateTimeComponents: DateTimeComponents.time);
   }
 
-  tz.TZDateTime _nextInstanceOfTime(hour, minute) {
+  tz.TZDateTime _nextInstanceOfDailyTime(hour, minute) {
     final tz.TZDateTime now =
         tz.TZDateTime.now(tz.getLocation('Asia/Ho_Chi_Minh'));
     tz.TZDateTime scheduledDate = tz.TZDateTime(
@@ -79,6 +80,40 @@ class NotificationService {
     }
     return scheduledDate;
   }
+
+//Schedule Specific Time Notification
+
+ Future<void> scheduleSpecificTimeNotification(
+  {    required id,
+    required title,
+    required body,
+    required hour,
+    required minute,}
+ ) async
+ {
+final details = _notificationsDetails();
+    await _flutterLocalNotificationsPlugin.zonedSchedule(
+        id, title, body, _nextInstanceOfSpecificTime(hour, minute), details,
+        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        matchDateTimeComponents: DateTimeComponents.time);
+
+ }
+
+   tz.TZDateTime _nextInstanceOfSpecificTime(hour, minute) {
+    final tz.TZDateTime now =
+        tz.TZDateTime.now(tz.getLocation('Asia/Ho_Chi_Minh'));
+    tz.TZDateTime scheduledDate = tz.TZDateTime(
+        tz.getLocation('Asia/Ho_Chi_Minh'),
+        now.year,
+        now.month,
+        now.day,
+        hour,
+        minute);
+    return scheduledDate;
+  }
+
 
   void onDidReceivelocalNotification(
       int id, String? title, String? body, String? payload) {}

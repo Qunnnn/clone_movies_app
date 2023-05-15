@@ -1,3 +1,5 @@
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import '../../../../constants/app_constants.dart';
 import '../../../../constants/assest_path.dart';
 import '../bloc/bloc.dart';
@@ -64,7 +66,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   right: 0,
                   child: Container(
                     decoration: const BoxDecoration(
-                      color: Colors.white,
+                      color: Color(0xffFFFAF4),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20)),
@@ -75,32 +77,35 @@ class _DetailsPageState extends State<DetailsPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Center(
-                              child: Text(
-                                state.details.title,
-                                style: titleStyle.copyWith(
-                                    color: Colors.black,
-                                    fontSize: 25.sp,
-                                    letterSpacing: -1),
+                            Text(
+                              state.details.title,
+                              style: titleStyle.copyWith(
+                                  color: Colors.teal.shade300,
+                                  fontSize: 25.sp,
+                                  letterSpacing: -1),
+                            ),
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                children: [
+                                  ...List.generate(
+                                      state.details.genres.length,
+                                      (index) => Padding(
+                                            padding: const EdgeInsets.only(
+                                                right: 10),
+                                            child: Text(
+                                              '• ' +
+                                                  state.details.genres[index]
+                                                      .name
+                                                      .toString(),
+                                              style: genreStyle,
+                                            ),
+                                          ))
+                                ],
                               ),
                             ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                ...List.generate(
-                                    state.details.genres.length,
-                                    (index) => Padding(
-                                          padding: EdgeInsets.only(left: 2.w),
-                                          child: Text(
-                                            state.details.genres[index].name
-                                                .toString(),
-                                            style: genreStyle,
-                                          ),
-                                        ))
-                              ],
-                            ),
                             Text(
-                              'Overview',
+                              'Overview:',
                               style: topicStyle.copyWith(
                                   color: Colors.black,
                                   fontSize: 20.sp,
@@ -139,25 +144,49 @@ class _DetailsPageState extends State<DetailsPage> {
                 Positioned(
                   top: 1.h,
                   left: 3.w,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Container(
-                      height: 5.h,
-                      width: 10.w,
-                      decoration: BoxDecoration(
-                          color: Colors.black,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: const Center(
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
+                  right: 3.w,
+                  child: Row(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          height: 5.h,
+                          width: 10.w,
+                          decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Center(
+                            child: Icon(
+                              FontAwesomeIcons.arrowLeft,
+                              color: Colors.white,
+                              size: 2.5.h,
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                      const Spacer(),
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                          height: 5.h,
+                          width: 10.w,
+                          decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(20)),
+                          child: Center(
+                            child: Icon(
+                              FontAwesomeIcons.bell,
+                              size: 2.5.h,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                )
+                ),
               ]),
             );
           }

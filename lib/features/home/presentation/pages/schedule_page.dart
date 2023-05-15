@@ -115,19 +115,6 @@ class _SchedulePageState extends State<SchedulePage> {
               SizedBox(
                 width: 5.w,
               ),
-              // CupertinoSwitch(
-              //   value: confirm,
-              //   onChanged: (bool value) {
-              //     setState(() {
-              //       confirm = value;
-
-              //       if (confirm) {
-
-              //       } else {}
-              //     });
-              //   },
-              //   activeColor: Colors.blueAccent,
-              // )
             ],
           ),
           SizedBox(

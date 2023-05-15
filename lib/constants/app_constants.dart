@@ -35,9 +35,9 @@ final genreStyle = TextStyle(
   fontWeight: FontWeight.w600,
 );
 final contentStyle = TextStyle(
-  fontSize: 17.sp,
+  fontSize: 18.sp,
   color: Colors.black,
   fontWeight: FontWeight.w300,
   letterSpacing: -0.5,
 );
-final Color? schedulePageBackGroundColor =  Color(0xff404258);
+final Color? schedulePageBackGroundColor = Color(0xff404258);

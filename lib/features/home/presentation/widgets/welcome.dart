@@ -45,13 +45,6 @@ class Welcome extends StatelessWidget implements PreferredSizeWidget {
               ),
             )),
         Positioned(
-            top: 2.h,
-            right: 5.w,
-            child: const Icon(
-              Icons.person,
-              color: Colors.white,
-            )),
-        Positioned(
           top: 6.h,
           left: 5.w,
           child: Text(
