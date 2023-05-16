@@ -1,5 +1,4 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
 import '../../../../constants/app_constants.dart';
 import '../../../../constants/assest_path.dart';
 import '../bloc/bloc.dart';
@@ -21,6 +20,7 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   late final DetailsBloc detailsBloc;
   late final CastBloc castBloc;
+ 
 
   @override
   void initState() {
@@ -80,7 +80,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             Text(
                               state.details.title,
                               style: titleStyle.copyWith(
-                                  color: Colors.teal.shade300,
+                                  color: const Color(0xff73A9AD),
                                   fontSize: 25.sp,
                                   letterSpacing: -1),
                             ),
@@ -168,7 +168,13 @@ class _DetailsPageState extends State<DetailsPage> {
                       ),
                       const Spacer(),
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          //                Navigator.push(
+                          // context,
+                          // MaterialPageRoute(
+                          //   builder: (context) => const
+                          // ));
+                        },
                         child: Container(
                           height: 5.h,
                           width: 10.w,

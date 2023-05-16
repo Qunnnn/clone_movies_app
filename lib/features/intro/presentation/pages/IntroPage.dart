@@ -1,4 +1,5 @@
 import 'package:clone_movies_app/constants/app_constants.dart';
+import 'package:clone_movies_app/service/local_storage_service.dart';
 import '../../../../constants/assest_path.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../../home/presentation/pages/home_page.dart';
@@ -90,18 +91,18 @@ class _IntroPageState extends State<IntroPage> {
                             SizedBox(
                               height: 2.h,
                             ),
-                            LoginButton(onTap: () {
+                            LoginButton(onTap: () async {
                               if (_formKey.currentState!.validate()) {
                                 if (emailController.text == 'admin@gmail.com' &&
                                     passwordController.text == "20092001") {
+                                  LocalStorageService localStorageService =
+                                      LocalStorageService();
+                                  setState(() {
+                                    localStorageService.write(true);
+                                  });
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(
-                                      builder: (context) => HomePage(
-                                        welcomeImage: state
-                                            .results[Random()
-                                                .nextInt(state.results.length)]
-                                            .backdropPath,
-                                      ),
+                                      builder: (context) =>  const HomePage(),
                                     ),
                                   );
                                 } else {

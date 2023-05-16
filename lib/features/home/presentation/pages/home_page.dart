@@ -4,8 +4,7 @@ import 'package:sizer/sizer.dart';
 import '../widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
-  String welcomeImage;
-  HomePage({super.key, required this.welcomeImage});
+ const HomePage({super.key, });
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -13,12 +12,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late final NotificationService _notificationService;
+
+ late  String image;
   @override
   void initState() {
     _notificationService = NotificationService();
     _notificationService.init();
     _notificationService.showNotification(
         id: 0, title: 'Welcome', body: 'Have a nice day!');
+
     super.initState();
   }
 
@@ -27,7 +29,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       bottomNavigationBar: buildNavBarWidget(),
       backgroundColor: Colors.black12,
-      appBar: Welcome(welcomImage: widget.welcomeImage),
+      appBar: Welcome(),
       drawer: drawerWidget(context),
       body: Column(
         children: [

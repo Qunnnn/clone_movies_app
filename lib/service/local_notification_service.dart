@@ -6,7 +6,7 @@ class NotificationService {
   NotificationService();
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
-  Future<void> init() async {
+  Future<void> init( ) async {
     tz.initializeTimeZones();
     const AndroidInitializationSettings androidInitializationSettings =
         AndroidInitializationSettings('@drawable/ic_stat_movie_filter');
@@ -83,25 +83,23 @@ class NotificationService {
 
 //Schedule Specific Time Notification
 
- Future<void> scheduleSpecificTimeNotification(
-  {    required id,
+  Future<void> scheduleSpecificTimeNotification({
+    required id,
     required title,
     required body,
     required hour,
-    required minute,}
- ) async
- {
-final details = _notificationsDetails();
+    required minute,
+  }) async {
+    final details = _notificationsDetails();
     await _flutterLocalNotificationsPlugin.zonedSchedule(
         id, title, body, _nextInstanceOfSpecificTime(hour, minute), details,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         matchDateTimeComponents: DateTimeComponents.time);
+  }
 
- }
-
-   tz.TZDateTime _nextInstanceOfSpecificTime(hour, minute) {
+  tz.TZDateTime _nextInstanceOfSpecificTime(hour, minute) {
     final tz.TZDateTime now =
         tz.TZDateTime.now(tz.getLocation('Asia/Ho_Chi_Minh'));
     tz.TZDateTime scheduledDate = tz.TZDateTime(
@@ -114,16 +112,15 @@ final details = _notificationsDetails();
     return scheduledDate;
   }
 
-
   void onDidReceivelocalNotification(
       int id, String? title, String? body, String? payload) {}
 
   void onDidReceiveNotificationResponse(
-      NotificationResponse notificationResponse) async {
+     NotificationResponse notificationResponse ) async {
     final String? payload = notificationResponse.payload;
-
     // await Navigator.push(
-    //   // MaterialPageRoute<void>(builder: (context) => SecondScreen(payload)),
+    //   context,
+    //   MaterialPageRoute<void>(builder: (context) => DetailsPage(id: 12)),
     // );
   }
 }

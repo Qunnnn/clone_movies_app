@@ -1,15 +1,23 @@
 import 'package:clone_movies_app/core/appBlocs/app_bloc_providers.dart';
+import 'package:clone_movies_app/features/home/home.dart';
+import 'package:clone_movies_app/service/local_storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'features/intro/presentation/pages/IntroPage.dart';
 
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  LocalStorageService localStorageService = LocalStorageService();
+  bool? status = await localStorageService.read() ?? false;
+  runApp(MyApp(
+    statusLogin: status,
+  ));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  bool? statusLogin;
+  MyApp({super.key, required this.statusLogin});
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +27,11 @@ class MyApp extends StatelessWidget {
         builder: (context, orientation, deviceType) => MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Clone movie application',
-          theme: ThemeData(primarySwatch: Colors.blue, fontFamily: 'Dongle' , useMaterial3: true),
-          home: const IntroPage(),
+          theme: ThemeData(
+              primarySwatch: Colors.blue,
+              fontFamily: 'Dongle',
+              useMaterial3: true),
+          home: statusLogin == true ? const HomePage() : const IntroPage(),
         ),
       ),
     );

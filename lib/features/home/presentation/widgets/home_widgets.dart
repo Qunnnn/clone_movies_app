@@ -1,5 +1,6 @@
 import 'package:clone_movies_app/features/home/presentation/pages/pages.dart';
 import 'package:clone_movies_app/features/intro/intro.dart';
+import 'package:clone_movies_app/service/local_storage_service.dart';
 import '../../../../constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -112,13 +113,14 @@ drawerWidget(BuildContext context) {
         reusableListTile(icon: FontAwesomeIcons.gear, title: 'Settings'),
         const Divider(thickness: 0.5),
         SizedBox(
-          height: 30.h,
+          height: 25.h,
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushReplacement(
+            onTap: () async {
+              await LocalStorageService().delete();
+            const  Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => const IntroPage(),
                 ),
@@ -247,22 +249,20 @@ SizedBox buildTitleWidget(String title) {
 }
 
 //Digital Clock Widget
-  Container digitalClockWidget({required String time}) {
-    return Container(
-      height: 20.h,
-      width: 20.h,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black, width: 2),
-        borderRadius: BorderRadius.circular(20),
+Container digitalClockWidget({required String time}) {
+  return Container(
+    height: 20.h,
+    width: 20.h,
+    decoration: BoxDecoration(
+      border: Border.all(color: Colors.black, width: 2),
+      borderRadius: BorderRadius.circular(20),
+    ),
+    child: Center(
+      child: Text(
+        time,
+        style: TextStyle(
+            color: Colors.white, fontSize: 70.sp, fontWeight: FontWeight.w700),
       ),
-      child: Center(
-        child: Text(
-          time,
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 70.sp,
-              fontWeight: FontWeight.w700),
-        ),
-      ),
-    );
-  }
+    ),
+  );
+}
