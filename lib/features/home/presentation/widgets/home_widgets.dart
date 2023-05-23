@@ -119,8 +119,7 @@ drawerWidget(BuildContext context) {
           padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: GestureDetector(
             onTap: () async {
-              await LocalStorageService().delete();
-            const  Navigator.of(context).pushReplacement(
+              Navigator.of(context).pushReplacement(
                 MaterialPageRoute(
                   builder: (context) => const IntroPage(),
                 ),

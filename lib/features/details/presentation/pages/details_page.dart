@@ -20,7 +20,6 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   late final DetailsBloc detailsBloc;
   late final CastBloc castBloc;
- 
 
   @override
   void initState() {
@@ -168,13 +167,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       ),
                       const Spacer(),
                       InkWell(
-                        onTap: () {
-                          //                Navigator.push(
-                          // context,
-                          // MaterialPageRoute(
-                          //   builder: (context) => const
-                          // ));
-                        },
+                        onTap: () {},
                         child: Container(
                           height: 5.h,
                           width: 10.w,

@@ -10,7 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'dart:math';
+
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
@@ -98,7 +98,7 @@ class _IntroPageState extends State<IntroPage> {
                                   LocalStorageService localStorageService =
                                       LocalStorageService();
                                   setState(() {
-                                    localStorageService.write(true);
+                                    localStorageService.writeStatus(key: 'statusLogin', status: true);
                                   });
                                   Navigator.of(context).pushReplacement(
                                     MaterialPageRoute(

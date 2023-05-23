@@ -9,9 +9,9 @@ import 'features/intro/presentation/pages/IntroPage.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   LocalStorageService localStorageService = LocalStorageService();
-  bool? status = await localStorageService.read() ?? false;
+  bool statusLogin = await localStorageService.readStatus(key: 'statusLogin') ?? false;
   runApp(MyApp(
-    statusLogin: status,
+    statusLogin: statusLogin,
   ));
 }
 
@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
               fontFamily: 'Dongle',
               useMaterial3: true),
           home: statusLogin == true ? const HomePage() : const IntroPage(),
+      
         ),
       ),
     );

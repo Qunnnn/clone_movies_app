@@ -1,22 +1,36 @@
+import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageService {
-  Future<bool?> read() async {
-    final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
+  final defaultData = <String, dynamic>{'hour': 0, 'minute': 0};
+  final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
+  Future<bool?> readStatus({required String key}) async {
     final SharedPreferences pref = await _pref;
-    final bool? status = pref.getBool("statusLogin");
+    final bool? status = pref.getBool(key);
     return status;
   }
 
-  write(bool status) async {
-    final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
+  Future<void> writeStatus({required String key, required bool status}) async {
     final SharedPreferences pref = await _pref;
-    pref.setBool("statusLogin", status);
+    pref.setBool(key, status);
+  }
+   
+
+
+  readSchedule() async {
+    final SharedPreferences pref = await _pref;
+    final String getData =
+        pref.getString('scheduleDailyDetails') ?? jsonEncode(defaultData);
+    return jsonDecode(getData);
   }
 
-  delete() async {
-    final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
+  saveSchedule(value) async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.setString('scheduleDailyDetails', jsonEncode(value));
+  }
+
+  Future<void> delete({required String key}) async {
     final SharedPreferences pref = await _pref;
-    await pref.remove("statusLogin");
+    await pref.remove(key);
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:async';
+import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest_all.dart' as tz;
@@ -6,7 +8,9 @@ class NotificationService {
   NotificationService();
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
-  Future<void> init( ) async {
+  final StreamController streamController = StreamController();
+  Stream get getStream => streamController.stream;
+  Future<void> intialize() async {
     tz.initializeTimeZones();
     const AndroidInitializationSettings androidInitializationSettings =
         AndroidInitializationSettings('@drawable/ic_stat_movie_filter');
@@ -54,11 +58,13 @@ class NotificationService {
     required body,
     required hour,
     required minute,
+    required payload,
   }) async {
     final details = _notificationsDetails();
 
     await _flutterLocalNotificationsPlugin.zonedSchedule(
         id, title, body, _nextInstanceOfDailyTime(hour, minute), details,
+        payload: payload,
         androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
@@ -83,44 +89,60 @@ class NotificationService {
 
 //Schedule Specific Time Notification
 
-  Future<void> scheduleSpecificTimeNotification({
-    required id,
-    required title,
-    required body,
-    required hour,
-    required minute,
-  }) async {
-    final details = _notificationsDetails();
-    await _flutterLocalNotificationsPlugin.zonedSchedule(
-        id, title, body, _nextInstanceOfSpecificTime(hour, minute), details,
-        androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-        uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
-        matchDateTimeComponents: DateTimeComponents.time);
-  }
+  // Future<void> scheduleSpecificTimeNotification({
+  //   required id,
+  //   required title,
+  //   required body,
+  //   required hour,
+  //   required minute,
+  // }) async {
+  //   final details = _notificationsDetails();
+  //   await _flutterLocalNotificationsPlugin.zonedSchedule(
+  //       id, title, body, _nextInstanceOfSpecificTime(hour, minute), details,
+  //       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
+  //       uiLocalNotificationDateInterpretation:
+  //           UILocalNotificationDateInterpretation.absoluteTime,
+  //       matchDateTimeComponents: DateTimeComponents.time);
+  // }
 
-  tz.TZDateTime _nextInstanceOfSpecificTime(hour, minute) {
-    final tz.TZDateTime now =
-        tz.TZDateTime.now(tz.getLocation('Asia/Ho_Chi_Minh'));
-    tz.TZDateTime scheduledDate = tz.TZDateTime(
-        tz.getLocation('Asia/Ho_Chi_Minh'),
-        now.year,
-        now.month,
-        now.day,
-        hour,
-        minute);
-    return scheduledDate;
+  // tz.TZDateTime _nextInstanceOfSpecificTime(hour, minute) {
+  //   final tz.TZDateTime now =
+  //       tz.TZDateTime.now(tz.getLocation('Asia/Ho_Chi_Minh'));
+  //   tz.TZDateTime scheduledDate = tz.TZDateTime(
+  //       tz.getLocation('Asia/Ho_Chi_Minh'),
+  //       now.year,
+  //       now.month,
+  //       now.day,
+  //       hour,
+  //       minute);
+  //   return scheduledDate;
+  // }
+
+//Cancel Notification
+  Future<void> cancelNotification({required id}) async {
+    await _flutterLocalNotificationsPlugin.cancel(id);
   }
 
   void onDidReceivelocalNotification(
-      int id, String? title, String? body, String? payload) {}
+    int id,
+    String? title,
+    String? body,
+    String? payload,
+  ) {}
 
-  void onDidReceiveNotificationResponse(
-     NotificationResponse notificationResponse ) async {
+  onDidReceiveNotificationResponse(
+      NotificationResponse notificationResponse) async {
+    // Retrieve the payload from the notification response
+
     final String? payload = notificationResponse.payload;
-    // await Navigator.push(
-    //   context,
-    //   MaterialPageRoute<void>(builder: (context) => DetailsPage(id: 12)),
-    // );
+    if (payload != null && payload.isNotEmpty) {
+      debugPrint('notification payload: $payload');
+       streamController.sink.add(payload);
+
+    }
+  }
+
+  close(){
+    streamController.close();
   }
 }
