@@ -41,3 +41,7 @@ final contentStyle = TextStyle(
   letterSpacing: -0.5,
 );
 final Color? schedulePageBackGroundColor = Color(0xff404258);
+
+//local Storage key
+
+final String statusLoginKey = 'statusLogin';

@@ -1,10 +1,12 @@
 import 'dart:convert';
+
+
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageService {
   final defaultData = <String, dynamic>{'hour': 0, 'minute': 0};
   final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
-  Future<bool?> readStatus({required String key}) async {
+  Future<bool?> readStatus({required String key}) async { 
     final SharedPreferences pref = await _pref;
     final bool? status = pref.getBool(key);
     return status;
@@ -13,7 +15,7 @@ class LocalStorageService {
   Future<void> writeStatus({required String key, required bool status}) async {
     final SharedPreferences pref = await _pref;
     pref.setBool(key, status);
-  }
+  } 
    
 
 

@@ -1,6 +1,5 @@
-import 'package:clone_movies_app/features/home/presentation/pages/pages.dart';
-import 'package:clone_movies_app/features/intro/intro.dart';
-import 'package:clone_movies_app/service/local_storage_service.dart';
+import 'package:clone_movies_app/config/routes/routes_handler.dart';
+
 import '../../../../constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
@@ -9,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../../../utils/services/local_storage_service.dart';
 import '../../../details/details.dart';
 import '../../domain/domain.dart';
 
@@ -100,11 +100,7 @@ drawerWidget(BuildContext context) {
         const Divider(thickness: 0.5),
         InkWell(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const SchedulePage(),
-                ));
+            Navigator.pushNamed(context, '/schedule_page');
           },
           child: reusableListTile(
               icon: FontAwesomeIcons.calendarCheck, title: 'Schedule'),
@@ -119,11 +115,10 @@ drawerWidget(BuildContext context) {
           padding: EdgeInsets.symmetric(horizontal: 25.w),
           child: GestureDetector(
             onTap: () async {
-              Navigator.of(context).pushReplacement(
-                MaterialPageRoute(
-                  builder: (context) => const IntroPage(),
-                ),
-              );
+              LocalStorageService localStorageService = LocalStorageService();
+              localStorageService.delete(key: statusLoginKey);
+            // await  AppPages.getStatusLogin();
+              Navigator.pushReplacementNamed(context, '/');
             },
             child: Container(
               decoration: BoxDecoration(

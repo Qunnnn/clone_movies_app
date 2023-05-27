@@ -1,6 +1,5 @@
-import 'package:clone_movies_app/service/local_notification_service.dart';
+import 'package:clone_movies_app/utils/services/local_notification_service.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:sizer/sizer.dart';
 import '../widgets/widgets.dart';
 

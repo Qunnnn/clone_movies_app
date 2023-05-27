@@ -1,8 +1,7 @@
 import 'package:clone_movies_app/constants/app_constants.dart';
-import 'package:clone_movies_app/service/local_storage_service.dart';
+import 'package:clone_movies_app/utils/services/local_storage_service.dart';
 import '../../../../constants/assest_path.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import '../../../home/presentation/pages/home_page.dart';
 import '../presentation.dart';
 import 'background.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
@@ -97,14 +95,10 @@ class _IntroPageState extends State<IntroPage> {
                                     passwordController.text == "20092001") {
                                   LocalStorageService localStorageService =
                                       LocalStorageService();
-                                  setState(() {
-                                    localStorageService.writeStatus(key: 'statusLogin', status: true);
-                                  });
-                                  Navigator.of(context).pushReplacement(
-                                    MaterialPageRoute(
-                                      builder: (context) =>  const HomePage(),
-                                    ),
-                                  );
+                                    localStorageService.writeStatus(
+                                        key: statusLoginKey, status: true);
+                                  Navigator.pushReplacementNamed(
+                                      context, '/home_page');
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(content: Text('Invalid ')),
