@@ -25,7 +25,7 @@ class AppPages {
     PageEntity(route: AppRoutes.SchedulePage, page: const SchedulePage()),
   ];
 
-  static MaterialPageRoute GenerateRouteSettings(RouteSettings routeSettings) {
+  static MaterialPageRoute generateRouteSettings(RouteSettings routeSettings) {
     if (routeSettings.name != null) {
       var result =
           routes.where((element) => element.route == routeSettings.name);

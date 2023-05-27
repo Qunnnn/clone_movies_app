@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
               fontFamily: 'Dongle',
               useMaterial3: true),
-          onGenerateRoute: AppPages.GenerateRouteSettings,
+          onGenerateRoute: AppPages.generateRouteSettings,
         ),
       ),
     );
