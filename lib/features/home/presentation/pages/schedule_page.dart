@@ -41,7 +41,7 @@ class _SchedulePageState extends State<SchedulePage> {
       _notificationService.scheduleDailyNotification(
         id: 1,
         title: 'Schedule',
-        body: 'It\s time for movie!',
+        body: 'It\'s time for movie!',
         hour: time.hour,
         minute: time.minute,
         payload: '550',

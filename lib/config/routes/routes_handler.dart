@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 
 class AppPages {
   static late bool isLoggedIn;
-  static getStatusLogin() async {
+   static getStatusLogin() async {
     LocalStorageService localStorageService = LocalStorageService();
     isLoggedIn =
         await localStorageService.readStatus(key: statusLoginKey) ?? false;
