@@ -30,7 +30,7 @@ class AppPages {
       var result =
           routes.where((element) => element.route == routeSettings.name);
       if (result.isNotEmpty) {
-        if (isLoggedIn) {
+        if (isLoggedIn && result.first.route == '/') {
           return MaterialPageRoute(
             builder: (context) => const HomePage(),
           );

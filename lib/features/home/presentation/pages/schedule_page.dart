@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:clone_movies_app/constants/app_constants.dart';
 import 'package:clone_movies_app/utils/services/local_storage_service.dart';
 import 'package:clone_movies_app/utils/services/schedule_daily_details.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';

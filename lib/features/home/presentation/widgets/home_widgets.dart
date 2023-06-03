@@ -117,7 +117,7 @@ drawerWidget(BuildContext context) {
             onTap: () async {
               LocalStorageService localStorageService = LocalStorageService();
               localStorageService.delete(key: statusLoginKey);
-            // await  AppPages.getStatusLogin();
+              // await  AppPages.getStatusLogin();
               Navigator.pushReplacementNamed(context, '/');
             },
             child: Container(
