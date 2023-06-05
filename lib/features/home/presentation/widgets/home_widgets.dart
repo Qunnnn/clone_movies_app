@@ -1,12 +1,10 @@
-
-import '../../../../constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../constants/assest_path.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../../../constants/constants.dart';
 import '../../../../utils/services/local_storage_service.dart';
 import '../../../details/details.dart';
 import '../../domain/domain.dart';

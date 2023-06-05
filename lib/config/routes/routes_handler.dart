@@ -42,7 +42,7 @@ class AppPages {
       }
     }
     return MaterialPageRoute(
-        builder: (context) => IntroPage(), settings: routeSettings);
+        builder: (context) => const IntroPage(), settings: routeSettings);
   }
 }
 
