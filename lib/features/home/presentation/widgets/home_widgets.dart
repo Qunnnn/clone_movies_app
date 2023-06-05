@@ -1,4 +1,3 @@
-import 'package:clone_movies_app/config/routes/routes_handler.dart';
 
 import '../../../../constants/app_constants.dart';
 import 'package:flutter/material.dart';

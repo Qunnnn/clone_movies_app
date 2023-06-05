@@ -1,7 +1,6 @@
-import 'package:clone_movies_app/constants/app_constants.dart';
 import 'package:clone_movies_app/utils/services/local_storage_service.dart';
-import '../../../../constants/assest_path.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import '../../../../constants/constants.dart';
 import '../presentation.dart';
 import 'background.dart';
 import 'package:flutter/material.dart';

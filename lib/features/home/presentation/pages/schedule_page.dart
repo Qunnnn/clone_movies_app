@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'package:clone_movies_app/constants/app_constants.dart';
-import 'package:clone_movies_app/utils/services/local_storage_service.dart';
-import 'package:clone_movies_app/utils/services/schedule_daily_details.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../utils/services/local_notification_service.dart';
+import '../../../../utils/services/services.dart';
 import '../widgets/widgets.dart';
 
 class SchedulePage extends StatefulWidget {
@@ -145,7 +143,7 @@ class _SchedulePageState extends State<SchedulePage> {
                   setState(() {
                     time = newTime;
                     scheduleDailyDetails =
-                        ScheduleDailyDetails(time.hour, time.minute);
+                        ScheduleDailyDetails(time.hour, time.minute , true);
                     localStorageService.saveSchedule(scheduleDailyDetails);
                     setNoti();
                   });
@@ -171,7 +169,7 @@ class _SchedulePageState extends State<SchedulePage> {
             future: updateScheduleTime(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                if (snapshot.data!.hour == 0 && snapshot.data!.minute == 0) {
+                if (snapshot.data!.status == false) {
                   return Container();
                 }
                 return Container(

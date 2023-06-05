@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageService {
-  final defaultData = <String, dynamic>{'hour': 0, 'minute': 0};
+  final defaultData = <String, dynamic>{'hour': 0 , 'minute' : 0 ,'status' : false};
   final Future<SharedPreferences> _pref = SharedPreferences.getInstance();
   Future<bool?> readStatus({required String key}) async { 
     final SharedPreferences pref = await _pref;

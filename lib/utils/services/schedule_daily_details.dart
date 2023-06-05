@@ -1,10 +1,13 @@
 class ScheduleDailyDetails {
   int hour;
   int minute;
-  ScheduleDailyDetails(this.hour, this.minute);
+  bool status;
+  ScheduleDailyDetails(this.hour, this.minute, this.status) ;
   ScheduleDailyDetails.fromJson(Map<String, dynamic> json)
       : hour = json['hour'],
-        minute = json['minute'];
+        minute = json['minute'],
+        status = json['status']
+        ;
 
-  Map<String, dynamic> toJson() => {'hour': hour, 'minute': minute};
+  Map<String, dynamic> toJson() => {'hour': hour, 'minute': minute , 'status' : status};
 }

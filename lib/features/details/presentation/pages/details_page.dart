@@ -1,6 +1,5 @@
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../../constants/app_constants.dart';
-import '../../../../constants/assest_path.dart';
+import '../../../../constants/constants.dart';
 import '../bloc/bloc.dart';
 import '../widgets/my_cast_widget.dart';
 import 'package:flutter/material.dart';
