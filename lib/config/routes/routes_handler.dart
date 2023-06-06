@@ -1,5 +1,6 @@
 import 'package:clone_movies_app/config/routes/routes_config.dart';
 import 'package:clone_movies_app/constants/app_constants.dart';
+import 'package:clone_movies_app/features/details/details.dart';
 import 'package:clone_movies_app/features/home/home.dart';
 import 'package:clone_movies_app/features/intro/intro.dart';
 import 'package:clone_movies_app/utils/services/local_storage_service.dart';
@@ -21,6 +22,10 @@ class AppPages {
     PageEntity(
       route: AppRoutes.HomePage,
       page: const HomePage(),
+    ),
+    PageEntity(
+      route: AppRoutes.DetailPage,
+      page: const DetailsPage(),
     ),
     PageEntity(route: AppRoutes.SchedulePage, page: const SchedulePage()),
   ];

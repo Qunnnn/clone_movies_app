@@ -1,3 +1,4 @@
+import 'package:clone_movies_app/config/routes/routes.dart';
 import 'package:clone_movies_app/utils/services/local_storage_service.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../../../constants/constants.dart';
@@ -97,7 +98,7 @@ class _IntroPageState extends State<IntroPage> {
                                     localStorageService.writeStatus(
                                         key: statusLoginKey, status: true);
                                   Navigator.pushReplacementNamed(
-                                      context, '/home_page');
+                                      context, AppRoutes.HomePage);
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(content: Text('Invalid ')),

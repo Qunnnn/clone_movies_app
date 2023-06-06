@@ -1,3 +1,4 @@
+import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../constants/constants.dart';
 import '../bloc/bloc.dart';
@@ -9,8 +10,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class DetailsPage extends StatefulWidget {
-  int id;
-  DetailsPage({super.key, required this.id});
+  const DetailsPage({super.key});
 
   @override
   State<DetailsPage> createState() => _DetailsPageState();
@@ -22,10 +22,12 @@ class _DetailsPageState extends State<DetailsPage> {
 
   @override
   void initState() {
-    detailsBloc = BlocProvider.of<DetailsBloc>(context)
-      ..add(LoadDetailsEvent(id: widget.id));
-    castBloc = BlocProvider.of<CastBloc>(context)
-      ..add(LoadCastEvent(id: widget.id));
+    SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+      final id = ModalRoute.of(context)!.settings.arguments as int;
+      detailsBloc = BlocProvider.of<DetailsBloc>(context)
+        ..add(LoadDetailsEvent(id: id));
+      castBloc = BlocProvider.of<CastBloc>(context)..add(LoadCastEvent(id: id));
+    });
     super.initState();
   }
 

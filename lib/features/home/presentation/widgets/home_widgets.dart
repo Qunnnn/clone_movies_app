@@ -1,3 +1,4 @@
+import 'package:clone_movies_app/config/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:intl/intl.dart';
@@ -6,7 +7,6 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../constants/constants.dart';
 import '../../../../utils/services/local_storage_service.dart';
-import '../../../details/details.dart';
 import '../../domain/domain.dart';
 
 //MovieList
@@ -16,10 +16,11 @@ ListView buildMovieListWidget({required List<dynamic> list}) {
       itemCount: list.length,
       itemBuilder: ((context, index) => GestureDetector(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => DetailsPage(
-                        id: list[index].id,
-                      )));
+              Navigator.pushNamed(
+                context,
+                AppRoutes.DetailPage,
+                arguments: list[index].id,
+              );
             },
             child: Container(
               margin: EdgeInsets.only(right: 1.w, left: index == 0 ? 5.w : 1.w),
@@ -97,7 +98,7 @@ drawerWidget(BuildContext context) {
         const Divider(thickness: 0.5),
         InkWell(
           onTap: () {
-            Navigator.pushNamed(context, '/schedule_page');
+            Navigator.pushNamed(context, AppRoutes.SchedulePage);
           },
           child: reusableListTile(
               icon: FontAwesomeIcons.calendarCheck, title: 'Schedule'),
@@ -114,8 +115,8 @@ drawerWidget(BuildContext context) {
             onTap: () async {
               LocalStorageService localStorageService = LocalStorageService();
               localStorageService.delete(key: statusLoginKey);
-              // await  AppPages.getStatusLogin();
-              Navigator.pushReplacementNamed(context, '/');
+               await  AppPages.getStatusLogin();
+              Navigator.pushReplacementNamed(context, AppRoutes.Initial);
             },
             child: Container(
               decoration: BoxDecoration(

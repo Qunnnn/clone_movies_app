@@ -5,4 +5,6 @@ class AppRoutes {
   static const HomePage = '/home_page';
   //Schedule Page
   static const SchedulePage = '/schedule_page';
+  //Detail Page
+  static const DetailPage = '/detail_page';
 }

@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clone_movies_app/features/intro/intro.dart';
 import 'package:flutter/material.dart';
