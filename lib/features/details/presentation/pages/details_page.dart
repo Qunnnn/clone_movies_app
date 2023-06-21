@@ -2,12 +2,12 @@ import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../constants/constants.dart';
 import '../bloc/bloc.dart';
-import '../widgets/my_cast_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import '../widgets/widgets.dart';
 
 class DetailsPage extends StatefulWidget {
   const DetailsPage({super.key});

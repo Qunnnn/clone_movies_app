@@ -35,7 +35,7 @@ class _IntroPageState extends State<IntroPage> {
         backgroundColor: Colors.black,
         body: BlocBuilder<IntroBloc, PosterState>(
           builder: (context, state) {
-            if (state is LoadingPosterState) {
+            if (state is LoadingPosterState) {  
               return SpinKitFadingCircle(
                 color: Colors.white,
                 size: 10.h,
