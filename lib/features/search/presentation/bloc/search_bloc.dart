@@ -11,12 +11,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc() : super(SearchInitial()) {
     on<MovieSearchEvent>((event, emit) async {
       emit(LoadingState());
-      try  {
-        final getMovieSearch = GetMovieSearch(movieSearchRepo: MovieSearchRepoIml(movieSearchDatasource: MovieSearchDataSourceIml()));
+      try {
+        final getMovieSearch = GetMovieSearch(
+            movieSearchRepo: MovieSearchRepoIml(
+                movieSearchDatasource: MovieSearchDataSourceIml()));
         final movies = await getMovieSearch.excute(event.query);
         emit(LoadedState(results: movies.fold((l) => [], (r) => r)));
       } catch (e) {
-        print(e.toString());
+        emit(ErrorState(error: e.toString()));
       }
     });
   }

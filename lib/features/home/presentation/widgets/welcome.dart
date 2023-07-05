@@ -8,7 +8,7 @@ import 'package:sizer/sizer.dart';
 import '../../../../constants/assest_path.dart';
 
 class Welcome extends StatefulWidget implements PreferredSizeWidget {
-  Welcome({
+  const Welcome({
     super.key,
   });
 

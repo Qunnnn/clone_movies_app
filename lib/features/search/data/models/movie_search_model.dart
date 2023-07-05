@@ -1,9 +1,13 @@
 import 'package:clone_movies_app/features/search/domain/entities/enitity.dart';
 
 class MovieSearchModel extends MovieSearchEntity {
+  @override
   final int id;
+  @override
   final String title;
+  @override
   final String poster_path;
+  @override
   final String releaseDate;
  const MovieSearchModel(
       {required this.id,

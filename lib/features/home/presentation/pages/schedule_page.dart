@@ -59,9 +59,9 @@ class _SchedulePageState extends State<SchedulePage> {
   }
 
   Future<ScheduleDailyDetails> updateScheduleTime() async {
-    ScheduleDailyDetails _scheduleDailyDetails =
+    ScheduleDailyDetails scheduleDailyDetails =
         ScheduleDailyDetails.fromJson(await localStorageService.readSchedule());
-    return _scheduleDailyDetails;
+    return scheduleDailyDetails;
   }
 
   @override
@@ -193,9 +193,7 @@ class _SchedulePageState extends State<SchedulePage> {
                         width: 5.w,
                       ),
                       Text(
-                        snapshot.data!.hour.toString().padLeft(2, '0') +
-                            ':' +
-                            snapshot.data!.minute.toString().padLeft(2, '0'),
+                        '${snapshot.data!.hour.toString().padLeft(2, '0')}:${snapshot.data!.minute.toString().padLeft(2, '0')}',
                         style: contentStyle.copyWith(
                             color: Colors.white, fontSize: 20.sp),
                       ),

@@ -1,37 +1,16 @@
-import 'package:clone_movies_app/utils/services/local_notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import '../widgets/widgets.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({
     super.key,
   });
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  late final NotificationService _notificationService;
-
-  late String image;
-
-  @override
-  void initState() {
-    _notificationService = NotificationService();
-    _notificationService.intialize();
-    _notificationService.showNotification(
-        id: 0, title: 'Welcome', body: 'Have a nice day!');
-
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black12,
-      appBar: Welcome(),
+      appBar: const Welcome(),
       drawer: drawerWidget(context),
       body: Column(
         children: [

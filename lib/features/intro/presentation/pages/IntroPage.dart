@@ -3,7 +3,6 @@ import 'package:clone_movies_app/utils/services/local_storage_service.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../../../constants/constants.dart';
 import '../presentation.dart';
-import 'background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sizer/sizer.dart';

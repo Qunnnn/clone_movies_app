@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clone_movies_app/constants/constants.dart';
 import 'package:clone_movies_app/features/search/presentation/bloc/search_bloc.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
+
+import '../widgets/movie_search_widget.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({super.key});
@@ -72,30 +73,16 @@ class SearchPage extends StatelessWidget {
                           itemCount: state.results.length,
                           itemBuilder: (context, index) {
                             final movie = state.results[index];
-                            return Container(
-                              margin: EdgeInsets.only(bottom: 1.h),
-                              decoration: BoxDecoration(
-                                color: Colors.grey[400],
-                                borderRadius: BorderRadius.circular(15),
-                              ),
-                              height: 10.h,
-                              child: Row(
-                                children: [
-                                  ClipRRect(
-                                      borderRadius: BorderRadius.circular(15),
-                                      child: CachedNetworkImage(
-                                        imageUrl:
-                                            "$baseUrlImage${movie.poster_path}",
-                                        fit: BoxFit.fill,
-                                      )),
-                                  Text(
-                                    movie.poster_path,
-                                    style: titleStyle,
-                                  ),
-                                ],
-                              ),
-                            );
+                            return MovieSearchWidget(movie: movie);
                           }),
+                    );
+                  }
+                  if (state is ErrorState) {
+                    return Center(
+                      child: Text(
+                        state.error,
+                        style: titleStyle,
+                      ),
                     );
                   }
                   return Container();

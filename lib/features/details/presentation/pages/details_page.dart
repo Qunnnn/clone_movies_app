@@ -94,10 +94,8 @@ class _DetailsPageState extends State<DetailsPage> {
                                             padding: const EdgeInsets.only(
                                                 right: 10),
                                             child: Text(
-                                              '• ' +
-                                                  state.details.genres[index]
-                                                      .name
-                                                      .toString(),
+                                              '• ${state.details.genres[index]
+                                                      .name}',
                                               style: genreStyle,
                                             ),
                                           ))
