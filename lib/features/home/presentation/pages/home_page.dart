@@ -30,7 +30,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: buildNavBarWidget(),
       backgroundColor: Colors.black12,
       appBar: Welcome(),
       drawer: drawerWidget(context),

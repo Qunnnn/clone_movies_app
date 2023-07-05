@@ -3,18 +3,20 @@ import 'package:clone_movies_app/constants/app_constants.dart';
 import 'package:clone_movies_app/features/details/details.dart';
 import 'package:clone_movies_app/features/home/home.dart';
 import 'package:clone_movies_app/features/intro/intro.dart';
+import 'package:clone_movies_app/features/main/presentation/pages/main_page.dart';
 import 'package:clone_movies_app/utils/services/local_storage_service.dart';
 import 'package:flutter/material.dart';
 
 class AppPages {
   static late bool isLoggedIn;
-   static getStatusLogin() async {
+  static getStatusLogin() async {
     LocalStorageService localStorageService = LocalStorageService();
     isLoggedIn =
         await localStorageService.readStatus(key: statusLoginKey) ?? false;
   }
 
   static List<PageEntity> routes = [
+    PageEntity(route: AppRoutes.MainPage, page: MainPage()),
     PageEntity(
       route: AppRoutes.Initial,
       page: const IntroPage(),
@@ -37,7 +39,7 @@ class AppPages {
       if (result.isNotEmpty) {
         if (isLoggedIn && result.first.route == '/') {
           return MaterialPageRoute(
-            builder: (context) => const HomePage(),
+            builder: (context) =>  MainPage(),
           );
         }
         return MaterialPageRoute(

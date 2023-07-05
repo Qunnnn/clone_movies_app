@@ -1,6 +1,8 @@
 class AppRoutes {
   //Intro Page
   static const Initial = '/';
+  //Main Page
+  static const MainPage = '/main_page';
   //Home Page
   static const HomePage = '/home_page';
   //Schedule Page

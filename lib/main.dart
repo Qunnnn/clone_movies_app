@@ -7,11 +7,11 @@ import 'package:sizer/sizer.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await AppPages.getStatusLogin();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+ const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
