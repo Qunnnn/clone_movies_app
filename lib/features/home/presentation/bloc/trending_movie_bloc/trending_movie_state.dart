@@ -1,4 +1,4 @@
-import '../../domain/entities/entity.dart';
+import '../../../domain/entities/entity.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class TrendingMovieState extends Equatable {

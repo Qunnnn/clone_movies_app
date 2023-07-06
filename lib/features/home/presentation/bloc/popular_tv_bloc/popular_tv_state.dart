@@ -1,5 +1,5 @@
-import '../../domain/entities/entity.dart';
 import 'package:equatable/equatable.dart';
+import '../../../domain/entities/entity.dart';
 
 abstract class PopularTvState extends Equatable {
   const PopularTvState();

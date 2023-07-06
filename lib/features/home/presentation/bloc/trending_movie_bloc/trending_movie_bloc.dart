@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-import '../../data/datasources/trending_movie_remote_datasource.dart';
-import '../../domain/usecases/get_trending_movie.dart';
+import '../../../data/datasources/trending_movie_remote_datasource.dart';
+import '../../../domain/usecases/get_trending_movie.dart';
 import 'trending_movie_event.dart';
 import 'trending_movie_state.dart';
-import '../../data/repositories/trending_movie_repository_iml.dart';
+import '../../../data/repositories/trending_movie_repository_iml.dart';
 
 
 class TrendingMovieBloc extends Bloc<TrendingMovieEvent, TrendingMovieState> {

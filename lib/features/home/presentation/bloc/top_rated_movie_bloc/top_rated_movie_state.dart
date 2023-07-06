@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-import '../../domain/entities/entity.dart';
+import '../../../domain/entities/entity.dart';
 
 abstract class TopRatedMovieState extends Equatable {
   const TopRatedMovieState();

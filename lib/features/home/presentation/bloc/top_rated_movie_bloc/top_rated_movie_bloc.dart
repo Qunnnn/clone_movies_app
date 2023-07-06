@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import '../../data/datasources/top_rated_movie_remote_datasource.dart';
-import '../../data/repositories/top_rated_movie_repository_iml.dart';
-import '../../domain/usecases/get_top_rated_movie.dart';
+import '../../../data/datasources/top_rated_movie_remote_datasource.dart';
+import '../../../data/repositories/top_rated_movie_repository_iml.dart';
+import '../../../domain/usecases/get_top_rated_movie.dart';
 import 'top_rated_movie_event.dart';
 import 'top_rated_movie_state.dart';
 
