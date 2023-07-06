@@ -1,4 +1,4 @@
-import '../../domain/entities/cast_entity.dart';
+import '../../../domain/entities/cast_entity.dart';
 import 'package:equatable/equatable.dart';
 
 abstract class CastState extends Equatable {

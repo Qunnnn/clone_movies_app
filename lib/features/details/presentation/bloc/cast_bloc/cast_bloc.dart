@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 
-import '../../data/datasources/cast_remote_data_sourche.dart';
-import '../../data/repositories/cast_repo_iml.dart';
-import '../../domain/usecases/get_cast.dart';
+import '../../../data/datasources/cast_remote_data_sourche.dart';
+import '../../../data/repositories/cast_repo_iml.dart';
+import '../../../domain/usecases/get_cast.dart';
 import 'cast_event.dart';
 import 'cast_state.dart';
 
