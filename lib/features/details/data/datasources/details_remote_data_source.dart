@@ -1,8 +1,8 @@
-import '../../../../constants/api_path.dart';
+import '../../../../shared/constants/api_path.dart';
 import '../models/details_model.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../../../../core/error/exceptions.dart';
+import '../../../../shared/core/error/exceptions.dart';
 
 abstract class DetailsRemoteDataSource {
   Future<DetailsModel> getDetails();

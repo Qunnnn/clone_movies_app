@@ -1,4 +1,4 @@
-import '../../../../core/error/errors.dart';
+import '../../../../shared/core/error/errors.dart';
 import 'package:dartz/dartz.dart';
 import '../domain.dart';
 

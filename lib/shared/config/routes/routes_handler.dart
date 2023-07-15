@@ -1,10 +1,10 @@
-import 'package:clone_movies_app/config/routes/routes_config.dart';
-import 'package:clone_movies_app/constants/app_constants.dart';
+import 'package:clone_movies_app/shared/config/routes/routes_config.dart';
+import 'package:clone_movies_app/shared/constants/app_constants.dart';
 import 'package:clone_movies_app/features/details/details.dart';
 import 'package:clone_movies_app/features/home/home.dart';
 import 'package:clone_movies_app/features/intro/intro.dart';
 import 'package:clone_movies_app/features/main/presentation/pages/main_page.dart';
-import 'package:clone_movies_app/utils/services/local_storage_service.dart';
+import 'package:clone_movies_app/shared/utils/services/local_storage_service.dart';
 import 'package:flutter/material.dart';
 
 class AppPages {

@@ -1,11 +1,11 @@
-import 'package:clone_movies_app/config/routes/routes.dart';
+import 'package:clone_movies_app/shared/config/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'package:intl/intl.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../../constants/constants.dart';
-import '../../../../utils/services/local_storage_service.dart';
+import '../../../../shared/constants/constants.dart';
+import '../../../../shared/utils/services/local_storage_service.dart';
 import '../../domain/domain.dart';
 
 //MovieList

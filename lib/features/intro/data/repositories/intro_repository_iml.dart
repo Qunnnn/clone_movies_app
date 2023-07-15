@@ -1,5 +1,5 @@
-import '../../../../core/error/exceptions.dart';
-import '../../../../core/error/errors.dart';
+import '../../../../shared/core/error/exceptions.dart';
+import '../../../../shared/core/error/errors.dart';
 import '../../domain/domain.dart';
 import 'package:dartz/dartz.dart';
 import '../datasources/datasources.dart';

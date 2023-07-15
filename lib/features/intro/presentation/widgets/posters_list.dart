@@ -1,4 +1,4 @@
-import '../../../../constants/assest_path.dart';
+import '../../../../shared/constants/assest_path.dart';
 import '../../domain/entities/backdrop_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';

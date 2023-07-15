@@ -5,7 +5,6 @@ import '../../../domain/usecases/get_popular_tv.dart';
 import 'popular_tv_event.dart';
 import 'popular_tv_state.dart';
 
-
 class PopularTvBloc extends Bloc<PopularTvEvent, PopularTvState> {
   PopularTvBloc() : super(InitialPopularTv()) {
     on<LoadPopularTvEvent>((event, emit) async {

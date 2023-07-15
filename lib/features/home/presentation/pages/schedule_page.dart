@@ -1,9 +1,9 @@
 import 'dart:async';
-import 'package:clone_movies_app/constants/app_constants.dart';
+import 'package:clone_movies_app/shared/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../utils/services/services.dart';
+import '../../../../shared/utils/services/services.dart';
 import '../widgets/widgets.dart';
 
 class SchedulePage extends StatefulWidget {

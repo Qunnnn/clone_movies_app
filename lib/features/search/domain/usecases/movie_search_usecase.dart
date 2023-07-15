@@ -1,6 +1,6 @@
 import 'package:clone_movies_app/features/search/domain/repositories/movie_search_repo.dart';
 import 'package:dartz/dartz.dart';
-import '../../../../core/error/errors.dart';
+import '../../../../shared/core/error/errors.dart';
 import '../entities/enitity.dart';
 
 class GetMovieSearch {

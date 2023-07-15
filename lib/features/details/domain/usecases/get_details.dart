@@ -1,7 +1,7 @@
 import '../entities/details_entity.dart';
 import '../repositories/details_repo.dart';
 import 'package:dartz/dartz.dart';
-import '../../../../core/error/errors.dart';
+import '../../../../shared/core/error/errors.dart';
 
 class GetDetails {
   final DetailsRepo detailsRepo;

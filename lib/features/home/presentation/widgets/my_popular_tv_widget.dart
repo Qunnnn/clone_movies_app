@@ -1,4 +1,4 @@
-import '../../../../constants/app_constants.dart';
+import '../../../../shared/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
@@ -52,6 +52,9 @@ class _PopularTvState extends State<PopularTv> {
             }
             if (state is LoadedPopularTvState) {
               return buildTvListWidget(list: state.movies);
+            }
+            if (state is ErrorPopularTvState) {
+              print(state.message);
             }
             return Container();
           }),

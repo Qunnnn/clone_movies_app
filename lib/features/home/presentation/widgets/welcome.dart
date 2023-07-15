@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../constants/assest_path.dart';
+import '../../../../shared/constants/assest_path.dart';
 
 class Welcome extends StatefulWidget implements PreferredSizeWidget {
   const Welcome({

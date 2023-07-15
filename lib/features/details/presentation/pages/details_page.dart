@@ -1,6 +1,6 @@
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../../../constants/constants.dart';
+import '../../../../shared/constants/constants.dart';
 import '../bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

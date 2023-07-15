@@ -1,4 +1,4 @@
-import 'package:clone_movies_app/constants/app_constants.dart';
+import 'package:clone_movies_app/shared/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 

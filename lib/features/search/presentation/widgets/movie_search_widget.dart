@@ -2,8 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
-import '../../../../config/routes/routes_config.dart';
-import '../../../../constants/constants.dart';
+import '../../../../shared/config/routes/routes_config.dart';
+import '../../../../shared/constants/constants.dart';
 import '../../domain/entities/enitity.dart';
 
 class MovieSearchWidget extends StatelessWidget {

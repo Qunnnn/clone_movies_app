@@ -1,8 +1,8 @@
 import 'package:clone_movies_app/features/search/data/models/movie_search_model.dart';
-import '../../../../constants/constants.dart';
+import '../../../../shared/constants/constants.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import '../../../../core/error/exceptions.dart';
+import '../../../../shared/core/error/exceptions.dart';
 abstract class MovieSearchDatasource {
   Future<List<MovieSearchModel>> getMovieSearch(String query);
 }

@@ -1,5 +1,5 @@
-import '../../../../constants/app_constants.dart';
-import '../../../../constants/assest_path.dart';
+import '../../../../shared/constants/app_constants.dart';
+import '../../../../shared/constants/assest_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../bloc/cast_bloc/cast_bloc.dart';

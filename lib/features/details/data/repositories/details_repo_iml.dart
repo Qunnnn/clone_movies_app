@@ -1,8 +1,8 @@
 import '../datasources/details_remote_data_source.dart';
 import '../models/details_model.dart';
 import '../../domain/repositories/details_repo.dart';
-import '../../../../core/error/errors.dart';
-import '../../../../core/error/exceptions.dart';
+import '../../../../shared/core/error/errors.dart';
+import '../../../../shared/core/error/exceptions.dart';
 import 'package:dartz/dartz.dart';
 
 class DetailsRepoIml implements DetailsRepo {

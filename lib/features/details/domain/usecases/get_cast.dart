@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import '../../../../core/error/errors.dart';
+import '../../../../shared/core/error/errors.dart';
 import '../domain.dart';
 
 class GetCasts {

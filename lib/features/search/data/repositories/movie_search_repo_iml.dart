@@ -1,7 +1,7 @@
-import 'package:clone_movies_app/core/error/errors.dart';
+import 'package:clone_movies_app/shared/core/error/errors.dart';
 import 'package:clone_movies_app/features/search/data/datasources/datasources.dart';
 import 'package:dartz/dartz.dart';
-import '../../../../core/error/exceptions.dart';
+import '../../../../shared/core/error/exceptions.dart';
 import '../../domain/domain.dart';
 
 class MovieSearchRepoIml implements MovieSearchRepo {
