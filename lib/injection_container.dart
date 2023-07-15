@@ -1,4 +1,6 @@
+import 'package:clone_movies_app/features/home/home.dart';
 import 'package:clone_movies_app/features/intro/intro.dart';
+import 'package:clone_movies_app/features/main/presentation/bloc/bloc.dart';
 import 'package:clone_movies_app/shared/core/network/manager/network_manager.dart';
 import 'package:get_it/get_it.dart';
 
@@ -19,5 +21,28 @@ Future<void> init() async {
 
   sl.registerLazySingleton<NetworkManager>(() => NetWorkManagerIml());
 
-  //
+  //Main
+  sl.registerFactory<MainPageBloc>(() => MainPageBloc());
+
+  //Home
+  sl.registerFactory<PopularTvBloc>(() => PopularTvBloc(getPopularTv: sl()));
+
+  sl.registerLazySingleton<GetPopularTv>(
+      () => GetPopularTv(popularTvRepo: sl()));
+
+  sl.registerLazySingleton<PopularTvRepo>(
+      () => PopularTvRepoIml(popularTvRemoteDataSoure: sl()));
+
+  sl.registerLazySingleton<PopularTvRemoteDataSoure>(
+      () => PopularTvRemoteDataSoureIml(networkManager: sl()));
+
+  sl.registerFactory<TopRatedMovieBloc>(
+      () => TopRatedMovieBloc(getTopRatedMovie: sl()));
+
+  sl.registerLazySingleton<GetTopRatedMovie>(
+      () => GetTopRatedMovie(topRatedMovieRepository: sl()));
+
+  sl.registerLazySingleton<TopRatedMovieRepository>(() => TopRatedRepositoryIml(topRatedMovieRemoteDataSoure: sl()) );  
+
+  sl.registerLazySingleton<TopRatedMovieRemoteDataSoure>(() => TopRatedMovieRemoteDataSoureIml(networkManager: sl()));  
 }

@@ -1,3 +1,5 @@
+import 'package:clone_movies_app/shared/core/network/manager/network_manager.dart';
+
 import '../../../../shared/constants/api_path.dart';
 import '../models/popular_tv_model.dart';
 import 'package:http/http.dart' as http;
@@ -9,19 +11,10 @@ abstract class PopularTvRemoteDataSoure {
 }
 
 class PopularTvRemoteDataSoureIml implements PopularTvRemoteDataSoure {
+  NetworkManager networkManager;
+  PopularTvRemoteDataSoureIml({required this.networkManager});
   @override
   Future<List<PopularTvModel>> getPopularTv() async {
-    List<PopularTvModel> results = [];
-    var url = Uri.parse("$baseUrl/tv/popular?api_key=$apiKey");
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      var movies = jsonDecode(response.body)["results"];
-      for (var movie in movies) {
-        results.add(PopularTvModel.fromJson(movie));
-      }
-    } else {
-      throw ServerException();
-    }
-    return results;
+    return await networkManager.fetchPopularTvData();
   }
 }

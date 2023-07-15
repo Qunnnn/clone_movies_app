@@ -9,12 +9,12 @@ import '../../../injection_container.dart';
 class AppBlocProviders {
   static get homeBlocProviders => [
         BlocProvider(
-          create: (context) => MainPageBloc(),
+          create: (context) => sl<MainPageBloc>(),
         ),
         BlocProvider(create: (context) => sl<IntroBloc>()),
         BlocProvider(create: (context) => TrendingMovieBloc()),
-        BlocProvider(create: (context) => PopularTvBloc()),
-        BlocProvider(create: (context) => TopRatedMovieBloc()),
+        BlocProvider(create: (context) => sl<PopularTvBloc>()),
+        BlocProvider(create: (context) => sl<TopRatedMovieBloc>()),
         BlocProvider(
           create: (context) => DetailsBloc(),
         ),

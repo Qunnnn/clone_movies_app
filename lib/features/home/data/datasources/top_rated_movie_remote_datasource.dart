@@ -1,31 +1,15 @@
-import '../../../../shared/constants/api_path.dart';
+import 'package:clone_movies_app/shared/core/network/manager/network_manager.dart';
 import '../models/top_rated_movie_model.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import '../../../../shared/core/error/exceptions.dart';
-
 
 abstract class TopRatedMovieRemoteDataSoure {
   Future<List<TopRatedMovieModel>> getTopRatedMovie();
 }
 
 class TopRatedMovieRemoteDataSoureIml implements TopRatedMovieRemoteDataSoure {
-
- TopRatedMovieRemoteDataSoureIml();
+  NetworkManager networkManager;
+  TopRatedMovieRemoteDataSoureIml({required this.networkManager});
   @override
   Future<List<TopRatedMovieModel>> getTopRatedMovie() async {
-    List<TopRatedMovieModel> results = [];
-    var url =
-        Uri.parse("$baseUrl/movie/top_rated?api_key=$apiKey");
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      var movies = jsonDecode(response.body)["results"];
-      for (var movie in movies) {
-        results.add(TopRatedMovieModel.fromJson(movie));
-      }
-    } else {
-      throw ServerException();
-    }
-    return results;
+    return await networkManager.fetchTopRatedMovieData();
   }
 }
