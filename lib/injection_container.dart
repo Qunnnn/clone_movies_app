@@ -42,7 +42,19 @@ Future<void> init() async {
   sl.registerLazySingleton<GetTopRatedMovie>(
       () => GetTopRatedMovie(topRatedMovieRepository: sl()));
 
-  sl.registerLazySingleton<TopRatedMovieRepository>(() => TopRatedRepositoryIml(topRatedMovieRemoteDataSoure: sl()) );  
+  sl.registerLazySingleton<TopRatedMovieRepository>(
+      () => TopRatedRepositoryIml(topRatedMovieRemoteDataSoure: sl()));
 
-  sl.registerLazySingleton<TopRatedMovieRemoteDataSoure>(() => TopRatedMovieRemoteDataSoureIml(networkManager: sl()));  
+  sl.registerLazySingleton<TopRatedMovieRemoteDataSoure>(
+      () => TopRatedMovieRemoteDataSoureIml(networkManager: sl()));
+
+  sl.registerFactory<TrendingMovieBloc>(
+      () => TrendingMovieBloc(getTrendingMovie: sl()));
+
+  sl.registerLazySingleton<GetTrendingMovie>(
+      () => GetTrendingMovie(trendingMovieRepository: sl()));
+
+  sl.registerLazySingleton<TrendingMovieRepository>(() => TrendingMovieRepositoryIml(trendingMovieRemoteDataSoure: sl()));   
+
+  sl.registerLazySingleton<TrendingMovieRemoteDataSoure>(() =>  TrendingMovieRemoteDataSoureIml(networkManager: sl())); 
 }

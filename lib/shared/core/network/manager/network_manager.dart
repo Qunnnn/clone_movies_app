@@ -9,6 +9,8 @@ abstract class NetworkManager {
   Future<List<PosterModel>> fetchIntroPoster();
   Future<List<PopularTvModel>> fetchPopularTvData();
   Future<List<TopRatedMovieModel>> fetchTopRatedMovieData();
+  Future<List<TrendingMovieModel>> fetchTrendingMovieData(
+      {required String timeWindow});
 }
 
 class NetWorkManagerIml implements NetworkManager {
@@ -43,17 +45,33 @@ class NetWorkManagerIml implements NetworkManager {
     }
     return results;
   }
-  
+
   @override
   Future<List<TopRatedMovieModel>> fetchTopRatedMovieData() async {
     List<TopRatedMovieModel> results = [];
-    var url =
-        Uri.parse("$baseUrl/movie/top_rated?api_key=$apiKey");
+    var url = Uri.parse("$baseUrl/movie/top_rated?api_key=$apiKey");
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var movies = jsonDecode(response.body)["results"];
       for (var movie in movies) {
         results.add(TopRatedMovieModel.fromJson(movie));
+      }
+    } else {
+      throw ServerException();
+    }
+    return results;
+  }
+
+  @override
+  Future<List<TrendingMovieModel>> fetchTrendingMovieData(
+      {required String timeWindow}) async {
+    List<TrendingMovieModel> results = [];
+    var url = Uri.parse("$baseUrl/trending/movie/$timeWindow?api_key=$apiKey");
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      var movies = jsonDecode(response.body)["results"];
+      for (var movie in movies) {
+        results.add(TrendingMovieModel.fromJson(movie));
       }
     } else {
       throw ServerException();

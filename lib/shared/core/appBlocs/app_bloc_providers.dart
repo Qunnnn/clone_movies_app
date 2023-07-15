@@ -12,7 +12,7 @@ class AppBlocProviders {
           create: (context) => sl<MainPageBloc>(),
         ),
         BlocProvider(create: (context) => sl<IntroBloc>()),
-        BlocProvider(create: (context) => TrendingMovieBloc()),
+        BlocProvider(create: (context) => sl<TrendingMovieBloc>()),
         BlocProvider(create: (context) => sl<PopularTvBloc>()),
         BlocProvider(create: (context) => sl<TopRatedMovieBloc>()),
         BlocProvider(

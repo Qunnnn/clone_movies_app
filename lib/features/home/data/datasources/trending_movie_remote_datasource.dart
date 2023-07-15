@@ -1,30 +1,17 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import '../../../../shared/constants/api_path.dart';
-import '../../../../shared/core/error/exceptions.dart';
+import 'package:clone_movies_app/shared/core/network/manager/network_manager.dart';
 import '../models/trending_movie_model.dart';
 
 abstract class TrendingMovieRemoteDataSoure {
-  Future<List<TrendingMovieModel>> getTrendingMovie();
+  Future<List<TrendingMovieModel>> getTrendingMovie(
+      {required String timeWindow});
 }
 
 class TrendingMovieRemoteDataSoureIml implements TrendingMovieRemoteDataSoure {
-  final String timeWindow;
-  TrendingMovieRemoteDataSoureIml({required this.timeWindow});
+  NetworkManager networkManager;
+  TrendingMovieRemoteDataSoureIml({required this.networkManager});
   @override
-  Future<List<TrendingMovieModel>> getTrendingMovie() async {
-    List<TrendingMovieModel> results = [];
-    var url =
-        Uri.parse("$baseUrl/trending/movie/$timeWindow?api_key=$apiKey");
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      var movies = jsonDecode(response.body)["results"];
-      for (var movie in movies) {
-        results.add(TrendingMovieModel.fromJson(movie));
-      }
-    } else {
-      throw ServerException();
-    }
-    return results;
+  Future<List<TrendingMovieModel>> getTrendingMovie(
+      {required String timeWindow}) async {
+    return await networkManager.fetchTrendingMovieData(timeWindow: timeWindow);
   }
 }
