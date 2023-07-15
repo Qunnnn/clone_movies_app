@@ -6,6 +6,6 @@ class GetCasts {
   final CastRepo castRepo;
   GetCasts({required this.castRepo});
 
-  Future<Either<Failure, List<CastEntity>>> execute() async =>
-      await castRepo.getCast();
+  Future<Either<Failure, List<CastEntity>>> execute({required int id}) async =>
+      await castRepo.getCast(id: id);
 }

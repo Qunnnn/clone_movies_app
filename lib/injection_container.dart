@@ -72,4 +72,14 @@ Future<void> init() async {
 
   sl.registerLazySingleton<DetailsRemoteDataSource>(
       () => DetailsRemoteDataSourceIml(networkManager: sl()));
+
+  sl.registerFactory<CastBloc>(() => CastBloc(getCasts: sl()));
+
+  sl.registerLazySingleton<GetCasts>(() => GetCasts(castRepo: sl()));
+
+  sl.registerLazySingleton<CastRepo>(
+      () => CastRepoIml(castRemoteDataSource: sl()));
+
+  sl.registerLazySingleton<CastRemoteDataSource>(
+      () => CastRemoteDataSourceIml(networkManager: sl()));
 }

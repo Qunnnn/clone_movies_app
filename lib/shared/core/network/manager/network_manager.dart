@@ -11,7 +11,8 @@ abstract class NetworkManager {
   Future<List<PopularTvModel>> fetchPopularTvData();
   Future<List<TopRatedMovieModel>> fetchTopRatedMovieData();
   Future<List<TrendingMovieModel>> fetchTrendingMovieData({required String timeWindow});
-  Future<DetailsModel> fetchDetailsModel({required int id});
+  Future<DetailsModel> fetchDetailsData({required int id});
+  Future<List<CastModel>> fetchCastData({required int id});
 }
 
 class NetWorkManagerIml implements NetworkManager {
@@ -81,12 +82,26 @@ class NetWorkManagerIml implements NetworkManager {
   }
   
   @override
-  Future<DetailsModel> fetchDetailsModel({required int id}) async {
+  Future<DetailsModel> fetchDetailsData({required int id}) async {
     var url = Uri.parse("$baseUrl/movie/$id?api_key=$apiKey");
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var detail = jsonDecode(response.body);
       return DetailsModel.fromJson(detail);
+    } else {
+      throw ServerException();
+    }
+  }
+  
+  @override
+  Future<List<CastModel>> fetchCastData({required int id}) async {
+    var url = Uri.parse("$baseUrl/movie/$id/credits?api_key=$apiKey");
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      var casts = jsonDecode(response.body)['cast'] as List;
+      List<CastModel> castList =
+          casts.map((e) => CastModel.fromJson(e)).toList();
+      return castList;
     } else {
       throw ServerException();
     }

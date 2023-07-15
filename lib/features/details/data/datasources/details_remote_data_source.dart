@@ -10,6 +10,6 @@ class DetailsRemoteDataSourceIml implements DetailsRemoteDataSource {
   DetailsRemoteDataSourceIml({required this.networkManager});
   @override
   Future<DetailsModel> getDetails({required int id}) async {
-    return await networkManager.fetchDetailsModel(id: id);
+    return await networkManager.fetchDetailsData(id: id);
   }
 }

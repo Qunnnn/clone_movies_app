@@ -19,7 +19,7 @@ class AppBlocProviders {
           create: (context) => sl<DetailsBloc>(),
         ),
         BlocProvider(
-          create: (context) => CastBloc(),
+          create: (context) => sl<CastBloc>(),
         ),
         BlocProvider(
           create: (context) => SearchBloc(),
