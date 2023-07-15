@@ -16,11 +16,13 @@ class AppBlocProviders {
         BlocProvider(create: (context) => sl<PopularTvBloc>()),
         BlocProvider(create: (context) => sl<TopRatedMovieBloc>()),
         BlocProvider(
-          create: (context) => DetailsBloc(),
+          create: (context) => sl<DetailsBloc>(),
         ),
         BlocProvider(
           create: (context) => CastBloc(),
         ),
-        BlocProvider(create: (context) => SearchBloc(),),
+        BlocProvider(
+          create: (context) => SearchBloc(),
+        ),
       ];
 }

@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:clone_movies_app/features/details/details.dart';
 import 'package:http/http.dart' as http;
 import '../../../../features/home/data/data.dart';
 import '../../../../features/intro/data/models/poster_model.dart';
@@ -9,8 +10,8 @@ abstract class NetworkManager {
   Future<List<PosterModel>> fetchIntroPoster();
   Future<List<PopularTvModel>> fetchPopularTvData();
   Future<List<TopRatedMovieModel>> fetchTopRatedMovieData();
-  Future<List<TrendingMovieModel>> fetchTrendingMovieData(
-      {required String timeWindow});
+  Future<List<TrendingMovieModel>> fetchTrendingMovieData({required String timeWindow});
+  Future<DetailsModel> fetchDetailsModel({required int id});
 }
 
 class NetWorkManagerIml implements NetworkManager {
@@ -77,5 +78,17 @@ class NetWorkManagerIml implements NetworkManager {
       throw ServerException();
     }
     return results;
+  }
+  
+  @override
+  Future<DetailsModel> fetchDetailsModel({required int id}) async {
+    var url = Uri.parse("$baseUrl/movie/$id?api_key=$apiKey");
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      var detail = jsonDecode(response.body);
+      return DetailsModel.fromJson(detail);
+    } else {
+      throw ServerException();
+    }
   }
 }

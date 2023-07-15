@@ -1,3 +1,4 @@
+import 'package:clone_movies_app/features/details/details.dart';
 import 'package:clone_movies_app/features/home/home.dart';
 import 'package:clone_movies_app/features/intro/intro.dart';
 import 'package:clone_movies_app/features/main/presentation/bloc/bloc.dart';
@@ -54,7 +55,21 @@ Future<void> init() async {
   sl.registerLazySingleton<GetTrendingMovie>(
       () => GetTrendingMovie(trendingMovieRepository: sl()));
 
-  sl.registerLazySingleton<TrendingMovieRepository>(() => TrendingMovieRepositoryIml(trendingMovieRemoteDataSoure: sl()));   
+  sl.registerLazySingleton<TrendingMovieRepository>(
+      () => TrendingMovieRepositoryIml(trendingMovieRemoteDataSoure: sl()));
 
-  sl.registerLazySingleton<TrendingMovieRemoteDataSoure>(() =>  TrendingMovieRemoteDataSoureIml(networkManager: sl())); 
+  sl.registerLazySingleton<TrendingMovieRemoteDataSoure>(
+      () => TrendingMovieRemoteDataSoureIml(networkManager: sl()));
+
+  //Detail
+
+  sl.registerFactory<DetailsBloc>(() => DetailsBloc(getDetails: sl()));
+
+  sl.registerLazySingleton<GetDetails>(() => GetDetails(detailsRepo: sl()));
+
+  sl.registerLazySingleton<DetailsRepo>(
+      () => DetailsRepoIml(detailsRemoteDataSource: sl()));
+
+  sl.registerLazySingleton<DetailsRemoteDataSource>(
+      () => DetailsRemoteDataSourceIml(networkManager: sl()));
 }

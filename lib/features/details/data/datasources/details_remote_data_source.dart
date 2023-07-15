@@ -1,25 +1,15 @@
-import '../../../../shared/constants/api_path.dart';
+import 'package:clone_movies_app/shared/core/network/manager/network_manager.dart';
 import '../models/details_model.dart';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
-import '../../../../shared/core/error/exceptions.dart';
 
 abstract class DetailsRemoteDataSource {
-  Future<DetailsModel> getDetails();
+  Future<DetailsModel> getDetails({required int id});
 }
 
 class DetailsRemoteDataSourceIml implements DetailsRemoteDataSource {
-  final int id;
-  DetailsRemoteDataSourceIml({required this.id});
+  NetworkManager networkManager;
+  DetailsRemoteDataSourceIml({required this.networkManager});
   @override
-  Future<DetailsModel> getDetails() async {
-    var url = Uri.parse("$baseUrl/movie/$id?api_key=$apiKey");
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      var detail = jsonDecode(response.body);
-      return DetailsModel.fromJson(detail);
-    } else {
-      throw ServerException();
-    }
+  Future<DetailsModel> getDetails({required int id}) async {
+    return await networkManager.fetchDetailsModel(id: id);
   }
 }

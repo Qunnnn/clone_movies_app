@@ -6,13 +6,13 @@ import '../../../../shared/core/error/exceptions.dart';
 import 'package:dartz/dartz.dart';
 
 class DetailsRepoIml implements DetailsRepo {
-  DetailsRemoteDataSourceIml detailsRemoteDataSourceIml;
-  DetailsRepoIml({required this.detailsRemoteDataSourceIml});
+  DetailsRemoteDataSource detailsRemoteDataSource;
+  DetailsRepoIml({required this.detailsRemoteDataSource});
 
   @override
-  Future<Either<Failure, DetailsModel>> getDetails() async {
+  Future<Either<Failure, DetailsModel>> getDetails({required int id}) async {
     try {
-      final details = await detailsRemoteDataSourceIml.getDetails();
+      final details = await detailsRemoteDataSource.getDetails(id: id);
       return Right(details);
     } on ServerException {
       return left(SeverFailure());

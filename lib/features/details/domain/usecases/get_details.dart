@@ -7,6 +7,6 @@ class GetDetails {
   final DetailsRepo detailsRepo;
   GetDetails({required this.detailsRepo});
 
-  Future<Either<Failure, DetailsEntity>> execute() async =>
-      await detailsRepo.getDetails();
+  Future<Either<Failure, DetailsEntity>> execute({required int id}) async =>
+      await detailsRepo.getDetails(id: id);
 }
