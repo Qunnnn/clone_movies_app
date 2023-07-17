@@ -7,7 +7,7 @@ import '../../../constants/constants.dart';
 import '../../error/exceptions.dart';
 
 abstract class NetworkManager {
-  Future<List<PosterModel>> fetchIntroPoster();
+  Future<List<PosterModel>> fetchUpcomingMovie();
   Future<List<PopularTvModel>> fetchPopularTvData();
   Future<List<TopRatedMovieModel>> fetchTopRatedMovieData();
   Future<List<TrendingMovieModel>> fetchTrendingMovieData({required String timeWindow});
@@ -17,7 +17,7 @@ abstract class NetworkManager {
 
 class NetWorkManagerIml implements NetworkManager {
   @override
-  Future<List<PosterModel>> fetchIntroPoster() async {
+  Future<List<PosterModel>> fetchUpcomingMovie() async {
     List<PosterModel> results = [];
     var url = Uri.parse("$baseUrl/movie/upcoming?api_key=$apiKey");
     final response = await http.get(url);

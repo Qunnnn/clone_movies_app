@@ -5,13 +5,13 @@ import 'package:dartz/dartz.dart';
 import '../datasources/datasources.dart';
 
 
-class IntroRepositoryIml implements BackdropRepository{
+class UpComingMovieRepositoryIml implements UpComingRepository{
   RemoteDataSource remoteDataSource;
-  IntroRepositoryIml({required this.remoteDataSource});
+  UpComingMovieRepositoryIml({required this.remoteDataSource});
   @override
   Future<Either<Failure, List<BackDropEntity>>> getBackdrop() async {
     try {
-      final listPosters = await remoteDataSource.getPosters();
+      final listPosters = await remoteDataSource.getUpcomingMovie();
       return Right(listPosters);
     } on ServerException {
       return Left(SeverFailure());

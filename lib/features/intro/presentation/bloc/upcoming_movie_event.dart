@@ -1,8 +1,8 @@
-part of 'intro_bloc.dart';
+part of 'upcoming_movie_bloc.dart';
 
 abstract class Event extends Equatable {
   const Event();
   @override
   List<Object> get props => [];
 }
-class IntroEvent extends Event{}
+class FetchMovieEvent extends Event{}

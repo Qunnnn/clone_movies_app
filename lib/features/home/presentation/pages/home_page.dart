@@ -1,3 +1,4 @@
+import 'package:clone_movies_app/features/home/presentation/widgets/my_upcoming_movie_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import '../widgets/widgets.dart';
@@ -31,6 +32,7 @@ class HomePage extends StatelessWidget {
                 ),
                 child: Column(
                   children: [
+                    const UpcomingMovie(),
                     const TrendingMovie(),
                     const TopRatedMovie(),
                     const PopularTv(),

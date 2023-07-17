@@ -1,1 +1,1 @@
-export 'intro_bloc.dart';
+export 'upcoming_movie_bloc.dart';

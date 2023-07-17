@@ -9,13 +9,13 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   //Intro
-  sl.registerFactory<IntroBloc>(() => IntroBloc(getBackdropIntro: sl()));
+  sl.registerFactory<UpComingMovieBloc>(() => UpComingMovieBloc(getUpComingMovie: sl()));
 
-  sl.registerLazySingleton<GetBackdropIntro>(
-      () => GetBackdropIntro(repository: sl()));
+  sl.registerLazySingleton<GetUpComingMovie>(
+      () => GetUpComingMovie(repository: sl()));
 
-  sl.registerLazySingleton<BackdropRepository>(
-      () => IntroRepositoryIml(remoteDataSource: sl()));
+  sl.registerLazySingleton<UpComingRepository>(
+      () => UpComingMovieRepositoryIml(remoteDataSource: sl()));
 
   sl.registerLazySingleton<RemoteDataSource>(
       () => RemoteDataSourceIml(netWorkManager: sl()));

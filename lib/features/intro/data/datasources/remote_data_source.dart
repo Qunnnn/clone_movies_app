@@ -2,14 +2,14 @@ import 'package:clone_movies_app/shared/core/network/manager/network_manager.dar
 import '../models/models.dart';
 
 abstract class RemoteDataSource {
-  Future<List<PosterModel>> getPosters();
+  Future<List<PosterModel>> getUpcomingMovie();
 }
 
 class RemoteDataSourceIml implements RemoteDataSource {
   NetworkManager netWorkManager;
   RemoteDataSourceIml({required this.netWorkManager});
   @override
-  Future<List<PosterModel>> getPosters() async {
-    return await netWorkManager.fetchIntroPoster();
+  Future<List<PosterModel>> getUpcomingMovie() async {
+    return await netWorkManager.fetchUpcomingMovie();
   }
 }

@@ -20,11 +20,11 @@ class _IntroPageState extends State<IntroPage> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  late final IntroBloc introBloc;
+  late final UpComingMovieBloc introBloc;
 
   @override
   void initState() {
-    introBloc = BlocProvider.of<IntroBloc>(context)..add(IntroEvent());
+    introBloc = BlocProvider.of<UpComingMovieBloc>(context)..add(FetchMovieEvent());
     super.initState();
   }
 
@@ -32,15 +32,15 @@ class _IntroPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.black,
-        body: BlocBuilder<IntroBloc, PosterState>(
+        body: BlocBuilder<UpComingMovieBloc, UpComingMovieState>(
           builder: (context, state) {
-            if (state is LoadingPosterState) {  
+            if (state is LoadingState) {  
               return SpinKitFadingCircle(
                 color: Colors.white,
                 size: 10.h,
               );
             }
-            if (state is LoadedIntroState) {
+            if (state is LoadedMoviesState) {
               return Stack(
                 children: [
                   Positioned(
