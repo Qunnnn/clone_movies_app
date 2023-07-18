@@ -20,11 +20,10 @@ class _IntroPageState extends State<IntroPage> {
   final _formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-  late final UpComingMovieBloc introBloc;
 
   @override
   void initState() {
-    introBloc = BlocProvider.of<UpComingMovieBloc>(context)..add(FetchMovieEvent());
+    BlocProvider.of<UpComingMovieBloc>(context).add(FetchMovieEvent());
     super.initState();
   }
 
@@ -34,7 +33,7 @@ class _IntroPageState extends State<IntroPage> {
         backgroundColor: Colors.black,
         body: BlocBuilder<UpComingMovieBloc, UpComingMovieState>(
           builder: (context, state) {
-            if (state is LoadingState) {  
+            if (state is Loading) {
               return SpinKitFadingCircle(
                 color: Colors.white,
                 size: 10.h,
@@ -94,8 +93,8 @@ class _IntroPageState extends State<IntroPage> {
                                     passwordController.text == "20092001") {
                                   LocalStorageService localStorageService =
                                       LocalStorageService();
-                                    localStorageService.writeStatus(
-                                        key: statusLoginKey, status: true);
+                                  localStorageService.writeStatus(
+                                      key: statusLoginKey, status: true);
                                   Navigator.pushReplacementNamed(
                                       context, AppRoutes.HomePage);
                                 } else {

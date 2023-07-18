@@ -9,7 +9,7 @@ class UpComingMovieBloc extends Bloc<Event, UpComingMovieState> {
   UpComingMovieBloc({required this.getUpComingMovie}) : super(Initial()) {
     on<FetchMovieEvent>((event, emit) async {
       // TODO: implement event handler
-      emit(LoadingState());
+      emit(Loading());
       try {
         final movies = await getUpComingMovie.excute();
         emit(LoadedMoviesState(results: movies.fold((l) => [], (r) => r)));

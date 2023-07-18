@@ -6,22 +6,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../bloc/bloc.dart';
 import 'widgets.dart';
 
-class TopRatedMovie extends StatefulWidget {
+class TopRatedMovie extends StatelessWidget {
   const TopRatedMovie({super.key});
-
-  @override
-  State<TopRatedMovie> createState() => _TopRatedMovieState();
-}
-
-class _TopRatedMovieState extends State<TopRatedMovie> {
-  late final TopRatedMovieBloc topRatedMovieBloc;
-
-  @override
-  void initState() {
-    topRatedMovieBloc = BlocProvider.of<TopRatedMovieBloc>(context)
-      ..add(LoadTopRatedMovie());
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

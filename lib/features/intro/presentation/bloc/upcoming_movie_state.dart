@@ -7,7 +7,7 @@ abstract class UpComingMovieState extends Equatable {
 }
 
 class Initial extends UpComingMovieState {}
-class LoadingState extends UpComingMovieState{}
+class Loading extends UpComingMovieState{}
 class LoadedMoviesState extends UpComingMovieState {
   List<BackDropEntity> results;
   LoadedMoviesState({required this.results});

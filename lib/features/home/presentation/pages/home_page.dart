@@ -1,12 +1,27 @@
+import 'package:clone_movies_app/features/home/home.dart';
 import 'package:clone_movies_app/features/home/presentation/widgets/my_upcoming_movie_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sizer/sizer.dart';
 import '../widgets/widgets.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({
     super.key,
   });
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    BlocProvider.of<TopRatedMovieBloc>(context).add(LoadTopRatedMovie());
+    BlocProvider.of<PopularTvBloc>(context).add(LoadPopularTvEvent());
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

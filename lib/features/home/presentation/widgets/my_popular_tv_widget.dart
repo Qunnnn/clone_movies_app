@@ -6,22 +6,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../bloc/bloc.dart';
 import 'widgets.dart';
 
-class PopularTv extends StatefulWidget {
+class PopularTv extends StatelessWidget {
   const PopularTv({super.key});
-
-  @override
-  State<PopularTv> createState() => _PopularTvState();
-}
-
-class _PopularTvState extends State<PopularTv> {
-  late final PopularTvBloc popularTvBloc;
-
-  @override
-  void initState() {
-    popularTvBloc = BlocProvider.of<PopularTvBloc>(context)
-      ..add(LoadPopularTvEvent());
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {

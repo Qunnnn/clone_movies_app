@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clone_movies_app/features/home/presentation/widgets/my_carousel_slider_widget.dart';
 import 'package:clone_movies_app/features/intro/intro.dart';
 import 'package:flutter/material.dart';
@@ -6,22 +7,8 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../shared/constants/constants.dart';
 
-class UpcomingMovie extends StatefulWidget {
+class UpcomingMovie extends StatelessWidget {
   const UpcomingMovie({super.key});
-
-  @override
-  State<UpcomingMovie> createState() => _UpcomingMovieState();
-}
-
-class _UpcomingMovieState extends State<UpcomingMovie> {
-  late final UpComingMovieBloc upComingMovieBloc;
-
-  @override
-  void initState() {
-    upComingMovieBloc = BlocProvider.of<UpComingMovieBloc>(context)
-      ..add(FetchMovieEvent());
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +31,7 @@ class _UpcomingMovieState extends State<UpcomingMovie> {
           width: double.infinity,
           child: BlocBuilder<UpComingMovieBloc, UpComingMovieState>(
               builder: (context, state) {
-            if (state is LoadingState) {
+            if (state is Loading) {
               return SpinKitDoubleBounce(
                 color: Colors.white,
                 size: 5.h,
@@ -70,11 +57,11 @@ class _UpcomingMovieState extends State<UpcomingMovie> {
                           },
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
-                            child: Image.network(
-                              '$baseUrlImage${movie.backdropPath}',
+                            child: CachedNetworkImage(
+                              imageUrl: '$baseUrlImage${movie.backdropPath}',
                               width: 174.5,
                               height: 250,
-                              fit: BoxFit.cover,
+                              fit: BoxFit.cover, 
                             ),
                           ),
                         ),

@@ -21,12 +21,10 @@ class Welcome extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
-  late final UpComingMovieBloc introBloc;
 
   @override
   void initState() {
-    // TODO: implement initState
-  introBloc = BlocProvider.of<UpComingMovieBloc>(context)..add(FetchMovieEvent());
+ BlocProvider.of<UpComingMovieBloc>(context).add(FetchMovieEvent());
     super.initState();
   }
 
@@ -34,7 +32,7 @@ class _WelcomeState extends State<Welcome> {
   Widget build(BuildContext context) {
     return BlocBuilder<UpComingMovieBloc,UpComingMovieState>(
       builder: (context, state) {
-        if (state is LoadingState) {
+        if (state is Loading) {
           return SpinKitFadingCircle(
             color: Colors.white,
             size: 10.h,
