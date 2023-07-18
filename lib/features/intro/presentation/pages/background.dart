@@ -1,9 +1,9 @@
-import '../../domain/entities/backdrop_entity.dart';
+import '../../domain/entities/up_coming_movie_entity.dart';
 import 'package:flutter/material.dart';
 import '../widgets/posters_list.dart';
 
 class Background extends StatefulWidget {
-  List<BackDropEntity> list;
+  List<UpComingMovieEntity> list;
 
    Background({super.key, required this.list});
 

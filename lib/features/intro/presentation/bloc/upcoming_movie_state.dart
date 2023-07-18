@@ -9,8 +9,8 @@ abstract class UpComingMovieState extends Equatable {
 class Initial extends UpComingMovieState {}
 class Loading extends UpComingMovieState{}
 class LoadedMoviesState extends UpComingMovieState {
-  List<BackDropEntity> results;
-  LoadedMoviesState({required this.results});
+ final List<UpComingMovieEntity> results;
+ const LoadedMoviesState({required this.results});
   @override
   List<Object> get props => [results];
 }

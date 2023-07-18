@@ -9,7 +9,7 @@ class UpComingMovieRepositoryIml implements UpComingRepository{
   RemoteDataSource remoteDataSource;
   UpComingMovieRepositoryIml({required this.remoteDataSource});
   @override
-  Future<Either<Failure, List<BackDropEntity>>> getBackdrop() async {
+  Future<Either<Failure, List<UpComingMovieEntity>>> getBackdrop() async {
     try {
       final listPosters = await remoteDataSource.getUpcomingMovie();
       return Right(listPosters);

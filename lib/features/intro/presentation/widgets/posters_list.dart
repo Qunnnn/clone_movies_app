@@ -1,12 +1,12 @@
 import '../../../../shared/constants/assest_path.dart';
-import '../../domain/entities/backdrop_entity.dart';
+import '../../domain/entities/up_coming_movie_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 import 'dart:math';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class PosterList extends StatefulWidget {
-  final List<BackDropEntity> list;
+  final List<UpComingMovieEntity> list;
   final int startIndex;
   const PosterList({super.key, required this.list, required this.startIndex});
 

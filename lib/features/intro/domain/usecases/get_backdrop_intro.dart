@@ -5,6 +5,6 @@ import '../repositories/repositories.dart';
 class GetUpComingMovie {
   final UpComingRepository repository;
   GetUpComingMovie({required this.repository});
-  Future<Either<Failure, List<BackDropEntity>>> excute() async =>
+  Future<Either<Failure, List<UpComingMovieEntity>>> excute() async =>
       await repository.getBackdrop();
 }

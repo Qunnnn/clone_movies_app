@@ -1,1 +1,1 @@
-export 'backdrop_entity.dart';
+export 'up_coming_movie_entity.dart';
