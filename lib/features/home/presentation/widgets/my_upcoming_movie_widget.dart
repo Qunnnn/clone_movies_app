@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:sizer/sizer.dart';
+import '../../../../shared/config/routes/routes_config.dart';
 import '../../../../shared/constants/constants.dart';
 
 class UpcomingMovie extends StatelessWidget {
@@ -47,14 +48,11 @@ class UpcomingMovie extends StatelessWidget {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            // Navigator.push(
-                            //     context,
-                            //     MaterialPageRoute(
-                            //       builder: (context) => DetailPage(
-                            //           isTvShow: false,
-                            //           data: snapshot.data!,
-                            //           index: index),
-                            //     ));
+                            Navigator.pushNamed(
+                              context,
+                              AppRoutes.DetailPage,
+                              arguments: movie.id,
+                            );
                           },
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(20),
