@@ -21,16 +21,15 @@ class Welcome extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
-
   @override
   void initState() {
- BlocProvider.of<UpComingMovieBloc>(context).add(FetchMovieEvent());
+    BlocProvider.of<UpComingMovieBloc>(context).add(FetchMovieEvent());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UpComingMovieBloc,UpComingMovieState>(
+    return BlocBuilder<UpComingMovieBloc, UpComingMovieState>(
       builder: (context, state) {
         if (state is Loading) {
           return SpinKitFadingCircle(
@@ -39,8 +38,7 @@ class _WelcomeState extends State<Welcome> {
           );
         }
         if (state is LoadedMoviesState) {
-          return Stack(
-            children: [
+          return Stack(children: [
             ShaderMask(
                 shaderCallback: (bounds) => const LinearGradient(colors: [
                       Color(0xff012841),
@@ -59,7 +57,7 @@ class _WelcomeState extends State<Welcome> {
                   ),
                 )),
             Positioned(
-                top: 2.h,
+                top: 3.h,
                 left: 5.w,
                 child: GestureDetector(
                   onTap: () {

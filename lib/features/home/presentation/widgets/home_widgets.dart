@@ -106,7 +106,7 @@ drawerWidget(BuildContext context) {
         reusableListTile(icon: FontAwesomeIcons.gear, title: 'Settings'),
         const Divider(thickness: 0.5),
         SizedBox(
-          height: 25.h,
+          height: 20.h,
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 25.w),
@@ -114,7 +114,7 @@ drawerWidget(BuildContext context) {
             onTap: () async {
               LocalStorageService localStorageService = LocalStorageService();
               localStorageService.delete(key: statusLoginKey);
-               await  AppPages.getStatusLogin();
+              await AppPages.getStatusLogin();
               Navigator.pushReplacementNamed(context, AppRoutes.Initial);
             },
             child: Container(
@@ -193,7 +193,6 @@ ListView buildTvListWidget({required List<Entity> list}) {
 }
 
 // NavBarWidget
-
 
 // Title Widget
 SizedBox buildTitleWidget(String title) {
