@@ -6,7 +6,7 @@ class MyCarouselSlider extends StatelessWidget {
   MyCarouselSlider(
       {required this.itemBuilder,
       required this.itemCount,
-      this.viewportFraction = .45,
+      this.viewportFraction = .47,
       Key? key,
       this.onPageChanged,
       this.aspectRatio = 0.9})
