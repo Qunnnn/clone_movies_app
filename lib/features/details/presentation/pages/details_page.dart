@@ -19,7 +19,8 @@ class DetailsPage extends StatefulWidget {
 class _DetailsPageState extends State<DetailsPage> {
   late final DetailsBloc detailsBloc;
   late final CastBloc castBloc;
-
+// TODO: Add video trailer feature
+// Api: https://api.themoviedb.org/3/movie/Ơmovie_id}/videos?api_key=4b267718190884db258081ab6fa96a5d
   @override
   void initState() {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
@@ -94,8 +95,7 @@ class _DetailsPageState extends State<DetailsPage> {
                                             padding: const EdgeInsets.only(
                                                 right: 10),
                                             child: Text(
-                                              '• ${state.details.genres[index]
-                                                      .name}',
+                                              '• ${state.details.genres[index].name}',
                                               style: genreStyle,
                                             ),
                                           ))
