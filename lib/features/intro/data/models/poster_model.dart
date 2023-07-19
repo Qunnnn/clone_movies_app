@@ -1,9 +1,13 @@
 import '../../domain/entities/entities.dart';
 
 class PosterModel extends UpComingMovieEntity {
+  @override
   final String backdropPath;
+  @override
   final String posterPath;
+  @override
   final String title;
+  @override
   final int id;
   const PosterModel(
       {required this.backdropPath,
