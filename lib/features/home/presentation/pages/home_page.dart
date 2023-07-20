@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.black12,
       appBar: const Welcome(),
-      drawer: drawerWidget(context),
+      drawer: const MyDrawer(),
       body: Column(
         children: [
           Expanded(

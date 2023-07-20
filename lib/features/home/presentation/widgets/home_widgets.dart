@@ -60,83 +60,8 @@ ListView buildMovieListWidget({required List<dynamic> list}) {
           )));
 }
 
-//  DrawerWidget
-drawerWidget(BuildContext context) {
-  return Drawer(
-    backgroundColor: Colors.black,
-    child: ListView(
-      padding: EdgeInsets.zero,
-      children: [
-        UserAccountsDrawerHeader(
-          accountName: Padding(
-            padding: const EdgeInsets.only(top: 30),
-            child: Text('Qun', style: accountNameStyle),
-          ),
-          accountEmail: Text(
-            'Vantranquan123@gmail.com',
-            style: accountEmailStyle,
-          ),
-          currentAccountPicture: ClipOval(
-            child: CircleAvatar(
-              child: Image.asset(
-                'assets/images/ava.JPG',
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          currentAccountPictureSize: const Size(70, 70),
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/images/background.png'),
-                fit: BoxFit.cover),
-          ),
-        ),
-        reusableListTile(icon: FontAwesomeIcons.user, title: 'Profile'),
-        const Divider(thickness: 0.5),
-        reusableListTile(icon: FontAwesomeIcons.bell, title: 'Notifications'),
-        const Divider(thickness: 0.5),
-        InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, AppRoutes.SchedulePage);
-          },
-          child: reusableListTile(
-              icon: FontAwesomeIcons.calendarCheck, title: 'Schedule'),
-        ),
-        const Divider(thickness: 0.5),
-        reusableListTile(icon: FontAwesomeIcons.gear, title: 'Settings'),
-        const Divider(thickness: 0.5),
-        SizedBox(
-          height: 20.h,
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25.w),
-          child: GestureDetector(
-            onTap: () async {
-              LocalStorageService localStorageService = LocalStorageService();
-              localStorageService.delete(key: statusLoginKey);
-              await AppPages.getStatusLogin();
-              Navigator.pushReplacementNamed(context, AppRoutes.Initial);
-            },
-            child: Container(
-              decoration: BoxDecoration(
-                  border: Border.all(color: Colors.red),
-                  borderRadius: BorderRadius.circular(20)),
-              child: Center(
-                child: Text(
-                  'Log out',
-                  style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 20.sp,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
-}
+
+
 
 ListTile reusableListTile({required IconData icon, String? title}) {
   return ListTile(
