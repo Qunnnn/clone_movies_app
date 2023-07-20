@@ -57,41 +57,45 @@ class _WelcomeState extends State<Welcome> {
                   ),
                 )),
             Positioned(
-                top: 3.h,
-                left: 5.w,
-                child: GestureDetector(
-                  onTap: () {
-                    Scaffold.of(context).openDrawer();
-                  },
-                  child: const Icon(
-                    Icons.menu,
-                    color: Colors.white,
+              top: 5.h,
+              left: 7.w,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      Scaffold.of(context).openDrawer();
+                    },
+                    child: const Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    ),
                   ),
-                )),
-            Positioned(
-              top: 6.h,
-              left: 5.w,
-              child: Text(
-                'Welcome',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'Dongle',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 25.sp,
-                ),
-              ),
-            ),
-            Positioned(
-              top: 11.h,
-              left: 5.w,
-              child: Text(
-                'Millions of movies, TV shows and people to discover. Explore now.',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'Dongle',
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14.sp,
-                ),
+                  Text(
+                    'Welcome',
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontFamily: 'Dongle',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 25.sp,
+                        height: 1),
+                  ),
+                  SizedBox(
+                    height: 5.h,
+                    width: MediaQuery.of(context).size.width,
+                    child: Text(
+                      'Millions of movies, TV shows and people to discover. Explore now.',
+                      style: TextStyle(
+                        overflow: TextOverflow.ellipsis,
+                        color: Colors.white,
+                        fontFamily: 'Dongle',
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14.sp,
+                        height: 1,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ]);
