@@ -1,10 +1,10 @@
 import 'dart:async';
+import 'package:clone_movies_app/features/home/presentation/widgets/my_digital_clock_widget.dart';
 import 'package:clone_movies_app/shared/constants/app_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:sizer/sizer.dart';
 import '../../../../shared/utils/services/services.dart';
-import '../widgets/widgets.dart';
 
 class SchedulePage extends StatefulWidget {
   const SchedulePage({super.key});
@@ -100,7 +100,7 @@ class _SchedulePageState extends State<SchedulePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              digitalClockWidget(
+              DigitalClockWidget(
                   time: getSystemTime().hour.toString().padLeft(2, '0')),
               SizedBox(
                 height: 5.h,
@@ -108,7 +108,7 @@ class _SchedulePageState extends State<SchedulePage> {
                   color: Colors.black,
                 ),
               ),
-              digitalClockWidget(
+              DigitalClockWidget(
                   time: getSystemTime().minute.toString().padLeft(2, '0')),
             ],
           ),

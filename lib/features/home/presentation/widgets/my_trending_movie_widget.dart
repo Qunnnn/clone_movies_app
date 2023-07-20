@@ -63,7 +63,7 @@ class _TrendingMovieState extends State<TrendingMovie> {
               );
             }
             if (state is LoadedState) {
-              return buildMovieListWidget(list: state.movies);
+              return MyMovieListWidget(list: state.movies);
             }
             return Container();
           }),

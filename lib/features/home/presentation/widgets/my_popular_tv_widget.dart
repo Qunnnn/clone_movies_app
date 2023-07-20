@@ -37,7 +37,7 @@ class PopularTv extends StatelessWidget {
               );
             }
             if (state is LoadedPopularTvState) {
-              return buildTvListWidget(list: state.movies);
+              return MyTvListWidget(list: state.movies);
             }
             if (state is ErrorPopularTvState) {
               print(state.message);

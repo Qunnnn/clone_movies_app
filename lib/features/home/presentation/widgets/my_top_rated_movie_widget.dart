@@ -37,7 +37,7 @@ class TopRatedMovie extends StatelessWidget {
               );
             }
             if (state is LoadedTopRatedState) {
-              return buildMovieListWidget(list: state.movies);
+              return MyMovieListWidget(list: state.movies);
             }
             return Container();
           }),
