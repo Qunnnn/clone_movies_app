@@ -17,7 +17,7 @@ class Welcome extends StatefulWidget implements PreferredSizeWidget {
 
   @override
   // TODO: implement preferredSize
-  Size get preferredSize => Size(double.infinity, 20.h);
+  Size get preferredSize => Size(double.infinity, 25.h);
 }
 
 class _WelcomeState extends State<Welcome> {
@@ -34,7 +34,7 @@ class _WelcomeState extends State<Welcome> {
         if (state is Loading) {
           return SpinKitFadingCircle(
             color: Colors.white,
-            size: 10.h,
+            size: 5.h,
           );
         }
         if (state is LoadedMoviesState) {
@@ -48,13 +48,14 @@ class _WelcomeState extends State<Welcome> {
                     ], begin: Alignment.topCenter, end: Alignment.bottomCenter)
                         .createShader(bounds),
                 blendMode: BlendMode.color,
-                child: SizedBox(
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 15.w),
+                  height: 25.h,
                   width: double.infinity,
                   child: CachedNetworkImage(
-                    imageUrl:
-                        "$baseUrlImage${state.results[Random().nextInt(state.results.length)].backdropPath}",
-                    fit: BoxFit.fitHeight,
-                  ),
+                      imageUrl:
+                          "$baseUrlImage${state.results[Random().nextInt(state.results.length)].backdropPath}",
+                      fit: BoxFit.fitHeight),
                 )),
             Positioned(
               top: 5.h,

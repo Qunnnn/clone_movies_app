@@ -27,38 +27,34 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.black12,
       appBar: const Welcome(),
       drawer: const MyDrawer(),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-              child: Container(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color(0xff2A2F4F),
-                      Color(0xff393646),
-                      Color(0xff393646),
-                      Color(0xff7B8FA1),
-                    ],
-                  ),
+      body: Container(
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              Color(0xff2A2F4F),
+              Color(0xff393646),
+              Color(0xff393646),
+              Color(0xff7B8FA1),
+            ],
+          ),
+        ),
+        child: Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                const UpcomingMovie(),
+                const TrendingMovie(),
+                const TopRatedMovie(),
+                const PopularTv(),
+                SizedBox(
+                  height: 5.h,
                 ),
-                child: Column(
-                  children: [
-                    const UpcomingMovie(),
-                    const TrendingMovie(),
-                    const TopRatedMovie(),
-                    const PopularTv(),
-                    SizedBox(
-                      height: 5.h,
-                    ),
-                  ],
-                ),
-              ),
+              ],
             ),
           ),
-        ],
+        ),
       ),
     );
   }
