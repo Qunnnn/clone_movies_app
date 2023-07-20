@@ -7,10 +7,7 @@ import '../../../../shared/config/routes/routes.dart';
 import '../../../../shared/constants/constants.dart';
 
 class MyMovieListWidget extends StatelessWidget {
-  const MyMovieListWidget({
-    super.key,
-    required this.list
-  });
+  const MyMovieListWidget({super.key, required this.list});
   final List<Entity> list;
   @override
   Widget build(BuildContext context) {
@@ -48,7 +45,7 @@ class MyMovieListWidget extends StatelessWidget {
                   Positioned(
                       bottom: 2.h,
                       left: 2.w,
-                      child: ReusableTitleWidget(title:list[index].title)),
+                      child: ReusableTitleWidget(title: list[index].title)),
                   Positioned(
                       bottom: 0.5.h,
                       left: 2.w,
