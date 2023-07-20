@@ -12,15 +12,15 @@ class CastInitial extends CastState {}
 class LoadingCastState extends CastState {}
 
 class LoadedCastState extends CastState {
-  List<CastEntity> casts;
-  LoadedCastState({required this.casts});
+  final List<CastEntity> casts;
+  const LoadedCastState({required this.casts});
   @override
   List<Object> get props => [casts];
 }
 
 class ErrorCastState extends CastState {
-  String message;
-  ErrorCastState({required this.message});
-    @override
+  final String message;
+  const ErrorCastState({required this.message});
+  @override
   List<Object> get props => [message];
 }

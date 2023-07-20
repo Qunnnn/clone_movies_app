@@ -13,16 +13,15 @@ class Initial extends TrendingMovieState {}
 class LoadingState extends TrendingMovieState {}
 
 class LoadedState extends TrendingMovieState {
-  List<Entity> movies;
-
-  LoadedState({required this.movies});
+  final List<Entity> movies;
+  const LoadedState({required this.movies});
   @override
   List<Object> get props => [movies];
 }
-class ErrorState extends TrendingMovieState {
-  String? message;
 
-  ErrorState({required this.message});
+class ErrorState extends TrendingMovieState {
+  final String message;
+  const ErrorState({required this.message});
   @override
   List<Object> get props => [message!];
 }

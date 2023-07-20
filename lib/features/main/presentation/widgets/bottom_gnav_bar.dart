@@ -31,32 +31,31 @@ class BottomGNavBar extends StatelessWidget {
               text: 'Home',
               onPressed: () {
                 BlocProvider.of<MainPageBloc>(context)
-                  .add(MainPageEvent(index: 0));
+                    .add(MainPageEvent(index: 0));
               },
             ),
             GButton(
               icon: FontAwesomeIcons.heart,
               text: 'like',
-               onPressed: () {
+              onPressed: () {
                 BlocProvider.of<MainPageBloc>(context)
-                  .add(MainPageEvent(index: 1));
+                    .add(MainPageEvent(index: 1));
               },
-              
             ),
             GButton(
               icon: FontAwesomeIcons.magnifyingGlass,
               text: 'Search',
-               onPressed: () {
+              onPressed: () {
                 BlocProvider.of<MainPageBloc>(context)
-                  .add(MainPageEvent(index: 2));
+                    .add(MainPageEvent(index: 2));
               },
             ),
             GButton(
               icon: FontAwesomeIcons.person,
               text: 'Profile',
-               onPressed: () {
+              onPressed: () {
                 BlocProvider.of<MainPageBloc>(context)
-                  .add(MainPageEvent(index: 3));
+                    .add(MainPageEvent(index: 3));
               },
             ),
           ]),

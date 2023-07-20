@@ -7,9 +7,9 @@ abstract class CastEvent extends Equatable {
 }
 
 class LoadCastEvent extends CastEvent {
-  int id;
-  LoadCastEvent({required this.id});
+  final int id;
+  const LoadCastEvent({required this.id});
 
-    @override
+  @override
   List<Object> get props => [id];
 }

@@ -139,50 +139,52 @@ class _DetailsPageState extends State<DetailsPage> {
                     ),
                   ),
                 ),
-                Positioned(
-                  top: 1.h,
-                  left: 3.w,
-                  right: 3.w,
-                  child: Row(
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Navigator.pop(context);
-                        },
-                        child: Container(
-                          height: 5.h,
-                          width: 10.w,
-                          decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Center(
-                            child: Icon(
-                              FontAwesomeIcons.arrowLeft,
-                              color: Colors.white,
-                              size: 2.5.h,
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 1.h, horizontal: 5.w),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            height: 5.h,
+                            width: 12.w,
+                            decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Center(
+                              child: Icon(
+                                FontAwesomeIcons.arrowLeft,
+                                color: Colors.white,
+                                size: 2.5.h,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      const Spacer(),
-                      InkWell(
-                        onTap: () {},
-                        child: Container(
-                          height: 5.h,
-                          width: 10.w,
-                          decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(20)),
-                          child: Center(
-                            child: Icon(
-                              FontAwesomeIcons.bell,
-                              size: 2.5.h,
-                              color: Colors.white,
+                        InkWell(
+                          onTap: () {},
+                          child: Container(
+                            height: 5.h,
+                            width: 12.w,
+                            decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(20)),
+                            child: Center(
+                              child: Icon(
+                                FontAwesomeIcons.bell,
+                                size: 2.5.h,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ]),

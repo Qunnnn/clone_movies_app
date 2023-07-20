@@ -12,16 +12,15 @@ class InitialPopularTv extends PopularTvState {}
 class LoadingPopularTvState extends PopularTvState {}
 
 class LoadedPopularTvState extends PopularTvState {
-  List<Entity> movies;
-
-  LoadedPopularTvState({required this.movies});
+  final List<Entity> movies;
+  const LoadedPopularTvState({required this.movies});
   @override
   List<Object> get props => [movies];
 }
 
 class ErrorPopularTvState extends PopularTvState {
-  String? message;
-  ErrorPopularTvState({required this.message});
+  final String message;
+  const ErrorPopularTvState({required this.message});
   @override
   List<Object> get props => [message!];
 }

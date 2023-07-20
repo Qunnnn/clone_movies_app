@@ -11,15 +11,15 @@ class DetailsInitial extends DetailsState {}
 class LoadingDetailsState extends DetailsState {}
 
 class LoadedDetailsState extends DetailsState {
-  DetailsEntity details;
-  LoadedDetailsState({required this.details});
+  final DetailsEntity details;
+  const LoadedDetailsState({required this.details});
   @override
   List<Object> get props => [details];
 }
 
 class ErrorDetailsState extends DetailsState {
-  String message;
-  ErrorDetailsState({required this.message});
-    @override
+  final String message;
+  const ErrorDetailsState({required this.message});
+  @override
   List<Object> get props => [message];
 }
