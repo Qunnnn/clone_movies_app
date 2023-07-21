@@ -1,14 +1,14 @@
 import 'package:equatable/equatable.dart';
 
 class TrailerEntity extends Equatable {
-  final String id;
-  const TrailerEntity({required this.id});
+  final String key;
+  const TrailerEntity({required this.key});
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [key];
 
   factory TrailerEntity.empty() {
     return const TrailerEntity(
-      id: ''
+      key: ''
     );
   }
 }

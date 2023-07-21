@@ -22,5 +22,5 @@ class ErrorTopRatedState extends TopRatedMovieState {
   final String message;
   const ErrorTopRatedState({required this.message});
   @override
-  List<Object> get props => [message!];
+  List<Object> get props => [message];
 }

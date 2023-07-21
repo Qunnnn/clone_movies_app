@@ -22,5 +22,5 @@ class ErrorPopularTvState extends PopularTvState {
   final String message;
   const ErrorPopularTvState({required this.message});
   @override
-  List<Object> get props => [message!];
+  List<Object> get props => [message];
 }

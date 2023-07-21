@@ -1,3 +1,6 @@
+import 'package:clone_movies_app/features/details/presentation/bloc/trailer_bloc/trailer_bloc.dart';
+import 'package:clone_movies_app/features/details/presentation/bloc/trailer_bloc/trailer_event.dart';
+import 'package:clone_movies_app/features/details/presentation/bloc/trailer_bloc/trailer_state.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../../../../shared/constants/constants.dart';
@@ -17,17 +20,13 @@ class DetailsPage extends StatefulWidget {
 }
 
 class _DetailsPageState extends State<DetailsPage> {
-  late final DetailsBloc detailsBloc;
-  late final CastBloc castBloc;
-// TODO: Add video trailer feature
-// Api: https://api.themoviedb.org/3/movie/Ơmovie_id}/videos?api_key=4b267718190884db258081ab6fa96a5d
   @override
   void initState() {
     SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
       final id = ModalRoute.of(context)!.settings.arguments as int;
-      detailsBloc = BlocProvider.of<DetailsBloc>(context)
-        ..add(LoadDetailsEvent(id: id));
-      castBloc = BlocProvider.of<CastBloc>(context)..add(LoadCastEvent(id: id));
+      BlocProvider.of<DetailsBloc>(context).add(LoadDetailsEvent(id: id));
+      BlocProvider.of<CastBloc>(context).add(LoadCastEvent(id: id));
+      BlocProvider.of<TrailerBloc>(context).add(LoadTrailerEvent(id: id));
     });
     super.initState();
   }
@@ -47,21 +46,69 @@ class _DetailsPageState extends State<DetailsPage> {
           if (state is LoadedDetailsState) {
             return SizedBox(
               height: MediaQuery.of(context).size.height,
+              width: double.infinity,
               child: Stack(children: [
-                Positioned(
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 60.h,
-                    child: SizedBox(
+                SizedBox(
+                  width: double.infinity,
+                  height: 31.h,
+                  child: Stack(children: [
+                    CachedNetworkImage(
+                      imageUrl: "$baseUrlImage${state.details.poster_path}",
+                      fit: BoxFit.fill,
                       width: double.infinity,
-                      child: CachedNetworkImage(
-                        imageUrl: "$baseUrlImage${state.details.poster_path}",
-                        fit: BoxFit.fill,
+                    ),
+                    Align(
+                      alignment: Alignment.topCenter,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: 1.h, horizontal: 5.w),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Navigator.pop(context);
+                              },
+                              child: Container(
+                                height: 5.h,
+                                width: 12.w,
+                                decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Center(
+                                  child: Icon(
+                                    FontAwesomeIcons.arrowLeft,
+                                    color: Colors.white,
+                                    size: 2.5.h,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {},
+                              child: Container(
+                                height: 5.h,
+                                width: 12.w,
+                                decoration: BoxDecoration(
+                                    color: Colors.black,
+                                    borderRadius: BorderRadius.circular(20)),
+                                child: Center(
+                                  child: Icon(
+                                    FontAwesomeIcons.bell,
+                                    size: 2.5.h,
+                                    color: Colors.white,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    )),
+                    ),
+                  ]),
+                ),
                 Positioned(
-                  top: 35.h,
+                  top: 30.h,
                   bottom: 0,
                   left: 0,
                   right: 0,
@@ -130,60 +177,39 @@ class _DetailsPageState extends State<DetailsPage> {
                               ],
                             ),
                             const CastWidget(),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Trailer',
+                                  style: topicStyle.copyWith(
+                                      color: Colors.black,
+                                      fontSize: 20.sp,
+                                      letterSpacing: -0.5),
+                                ),
+                                BlocBuilder<TrailerBloc, TrailerState>(
+                                  builder: (context, state) {
+                                    if (state is TrailerLoading) {
+                                      return SpinKitCircle(
+                                        size: 7.h,
+                                        color: Colors.white,
+                                      );
+                                    }
+                                    if (state is TrailerLoaded) {
+                                      print(state.trailer.key);
+                                      return Text(state.trailer.key);
+                                    }
+                                    return Container();
+                                  },
+                                ),
+                              ],
+                            ),
                             SizedBox(
-                              height: 3.h,
+                              height: 5.h,
                             ),
                           ],
                         ),
                       ),
-                    ),
-                  ),
-                ),
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding:
-                        EdgeInsets.symmetric(vertical: 1.h, horizontal: 5.w),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                          child: Container(
-                            height: 5.h,
-                            width: 12.w,
-                            decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Center(
-                              child: Icon(
-                                FontAwesomeIcons.arrowLeft,
-                                color: Colors.white,
-                                size: 2.5.h,
-                              ),
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          onTap: () {},
-                          child: Container(
-                            height: 5.h,
-                            width: 12.w,
-                            decoration: BoxDecoration(
-                                color: Colors.black,
-                                borderRadius: BorderRadius.circular(20)),
-                            child: Center(
-                              child: Icon(
-                                FontAwesomeIcons.bell,
-                                size: 2.5.h,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
                     ),
                   ),
                 ),

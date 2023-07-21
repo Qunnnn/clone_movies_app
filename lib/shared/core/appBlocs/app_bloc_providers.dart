@@ -1,4 +1,5 @@
 import 'package:clone_movies_app/features/details/details.dart';
+import 'package:clone_movies_app/features/details/presentation/bloc/trailer_bloc/trailer_bloc.dart';
 import 'package:clone_movies_app/features/main/presentation/bloc/bloc.dart';
 import 'package:clone_movies_app/features/search/presentation/bloc/search_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,6 +22,7 @@ class AppBlocProviders {
         BlocProvider(
           create: (context) => sl<CastBloc>(),
         ),
+        BlocProvider(create: (context) => sl<TrailerBloc>()),
         BlocProvider(
           create: (context) => SearchBloc(),
         ),

@@ -23,5 +23,5 @@ class ErrorState extends TrendingMovieState {
   final String message;
   const ErrorState({required this.message});
   @override
-  List<Object> get props => [message!];
+  List<Object> get props => [message];
 }

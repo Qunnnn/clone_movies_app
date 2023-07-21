@@ -6,7 +6,7 @@ class MyCarouselSlider extends StatelessWidget {
   MyCarouselSlider(
       {required this.itemBuilder,
       required this.itemCount,
-      this.viewportFraction = .47,
+      this.viewportFraction = .45,
       Key? key,
       this.onPageChanged,
       this.aspectRatio = 0.9})
@@ -23,7 +23,9 @@ class MyCarouselSlider extends StatelessWidget {
       itemCount: itemCount,
       itemBuilder: itemBuilder,
       options: CarouselOptions(
+        autoPlay: true,
         onPageChanged: onPageChanged,
+        autoPlayAnimationDuration: const Duration(seconds: 1),
         enableInfiniteScroll: itemCount > 2,
         viewportFraction: viewportFraction,
         enlargeCenterPage: itemCount != 1,
