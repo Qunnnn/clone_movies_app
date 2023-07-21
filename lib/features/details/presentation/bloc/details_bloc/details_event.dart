@@ -7,8 +7,8 @@ abstract class DetailsEvent extends Equatable {
 }
 
 class LoadDetailsEvent extends DetailsEvent {
-  int id;
-  LoadDetailsEvent({required this.id});
+  final int id;
+  const LoadDetailsEvent({required this.id});
   @override
   List<Object> get props => [id];
 }

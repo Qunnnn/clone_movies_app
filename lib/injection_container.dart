@@ -1,4 +1,5 @@
 import 'package:clone_movies_app/features/details/details.dart';
+import 'package:clone_movies_app/features/details/presentation/bloc/trailer_bloc/trailer_bloc.dart';
 import 'package:clone_movies_app/features/home/home.dart';
 import 'package:clone_movies_app/features/intro/intro.dart';
 import 'package:clone_movies_app/features/main/presentation/bloc/bloc.dart';
@@ -9,7 +10,8 @@ final sl = GetIt.instance;
 
 Future<void> init() async {
   //Intro
-  sl.registerFactory<UpComingMovieBloc>(() => UpComingMovieBloc(getUpComingMovie: sl()));
+  sl.registerFactory<UpComingMovieBloc>(
+      () => UpComingMovieBloc(getUpComingMovie: sl()));
 
   sl.registerLazySingleton<GetUpComingMovie>(
       () => GetUpComingMovie(repository: sl()));
@@ -82,4 +84,12 @@ Future<void> init() async {
 
   sl.registerLazySingleton<CastRemoteDataSource>(
       () => CastRemoteDataSourceIml(networkManager: sl()));
+
+  sl.registerFactory<TrailerBloc>(() => TrailerBloc(getTrailer: sl()));
+
+  sl.registerLazySingleton<GetTrailer>(() => GetTrailer(trailerRepo: sl()));
+
+  sl.registerLazySingleton<TrailerRepo>(() => TrailerRepoIml(trailerRemoteDataSource: sl()));
+
+  sl.registerLazySingleton<TrailerRemoteDataSource>(() => TrailerRemoteDataSourceIml(networkManager: sl()));
 }

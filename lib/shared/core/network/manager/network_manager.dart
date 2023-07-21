@@ -13,13 +13,14 @@ abstract class NetworkManager {
   Future<List<TrendingMovieModel>> fetchTrendingMovieData({required String timeWindow});
   Future<DetailsModel> fetchDetailsData({required int id});
   Future<List<CastModel>> fetchCastData({required int id});
+  Future<TrailerModel> fetchTrailer({required int id});
 }
 
 class NetWorkManagerIml implements NetworkManager {
   @override
   Future<List<PosterModel>> fetchUpcomingMovie() async {
     List<PosterModel> results = [];
-    var url = Uri.parse("$baseUrl/movie/upcoming?api_key=$apiKey");
+    final url = Uri.parse("$baseUrl/movie/upcoming?api_key=$apiKey");
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var posters = jsonDecode(response.body)["results"];
@@ -35,7 +36,7 @@ class NetWorkManagerIml implements NetworkManager {
   @override
   Future<List<PopularTvModel>> fetchPopularTvData() async {
     List<PopularTvModel> results = [];
-    var url = Uri.parse("$baseUrl/tv/popular?api_key=$apiKey");
+    final url = Uri.parse("$baseUrl/tv/popular?api_key=$apiKey");
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var movies = jsonDecode(response.body)["results"];
@@ -51,7 +52,7 @@ class NetWorkManagerIml implements NetworkManager {
   @override
   Future<List<TopRatedMovieModel>> fetchTopRatedMovieData() async {
     List<TopRatedMovieModel> results = [];
-    var url = Uri.parse("$baseUrl/movie/top_rated?api_key=$apiKey");
+    final url = Uri.parse("$baseUrl/movie/top_rated?api_key=$apiKey");
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var movies = jsonDecode(response.body)["results"];
@@ -68,7 +69,7 @@ class NetWorkManagerIml implements NetworkManager {
   Future<List<TrendingMovieModel>> fetchTrendingMovieData(
       {required String timeWindow}) async {
     List<TrendingMovieModel> results = [];
-    var url = Uri.parse("$baseUrl/trending/movie/$timeWindow?api_key=$apiKey");
+    final url = Uri.parse("$baseUrl/trending/movie/$timeWindow?api_key=$apiKey");
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var movies = jsonDecode(response.body)["results"];
@@ -80,10 +81,10 @@ class NetWorkManagerIml implements NetworkManager {
     }
     return results;
   }
-  
+
   @override
   Future<DetailsModel> fetchDetailsData({required int id}) async {
-    var url = Uri.parse("$baseUrl/movie/$id?api_key=$apiKey");
+    final url = Uri.parse("$baseUrl/movie/$id?api_key=$apiKey");
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var detail = jsonDecode(response.body);
@@ -92,16 +93,29 @@ class NetWorkManagerIml implements NetworkManager {
       throw ServerException();
     }
   }
-  
+
   @override
   Future<List<CastModel>> fetchCastData({required int id}) async {
-    var url = Uri.parse("$baseUrl/movie/$id/credits?api_key=$apiKey");
+    final url = Uri.parse("$baseUrl/movie/$id/credits?api_key=$apiKey");
     final response = await http.get(url);
     if (response.statusCode == 200) {
       var casts = jsonDecode(response.body)['cast'] as List;
       List<CastModel> castList =
           casts.map((e) => CastModel.fromJson(e)).toList();
       return castList;
+    } else {
+      throw ServerException();
+    }
+  }
+  
+  @override
+  Future<TrailerModel> fetchTrailer({required int id}) async {
+    final url = Uri.parse("$baseUrl/movie/$id/videos?api_key=$apiKey");
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      var json = jsonDecode(response.body)['results'][0];
+       final trailer =  TrailerModel.fromJson(json);
+      return trailer;
     } else {
       throw ServerException();
     }
