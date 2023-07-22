@@ -9,7 +9,7 @@ import '../widgets/widgets.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({super.key});
-  List<Widget> pageList = [
+ final List<Widget> pageList = [
     const HomePage(),
     const FavPage(),
     const SearchPage(),

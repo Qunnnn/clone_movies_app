@@ -19,8 +19,8 @@ class ErrorState extends SearchState {
 }
 
 class LoadedState extends SearchState {
-  List<MovieSearchEntity> results;
-  LoadedState({required this.results});
+  final List<MovieSearchEntity> results;
+  const LoadedState({required this.results});
   @override
   List<Object> get props => [];
 }

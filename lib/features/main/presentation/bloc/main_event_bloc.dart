@@ -8,6 +8,6 @@ abstract class Event extends Equatable {
 
 
 class MainPageEvent extends Event {
-  int index;
-  MainPageEvent({required this.index});
+ final int index;
+ const MainPageEvent({required this.index});
 }

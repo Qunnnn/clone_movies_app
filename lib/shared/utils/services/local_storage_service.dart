@@ -31,7 +31,7 @@ class LocalStorageService {
 
   saveSchedule(value) async {
     final Future<SharedPreferences> pref = SharedPreferences.getInstance();
-    final prefs = await SharedPreferences.getInstance();
+    final prefs = await pref;
     prefs.setString('scheduleDailyDetails', jsonEncode(value));
   }
 
