@@ -2,32 +2,25 @@ import '../../domain/entities/up_coming_movie_entity.dart';
 import 'package:flutter/material.dart';
 import '../widgets/posters_list.dart';
 
-class Background extends StatefulWidget {
-  List<UpComingMovieEntity> list;
+class Background extends StatelessWidget {
+  final List<UpComingMovieEntity> list;
 
-   Background({super.key, required this.list});
-
-  @override
-  State<Background> createState() => _BackgroundState();
-}
-
-class _BackgroundState extends State<Background> {
-    
+  const Background({super.key, required this.list});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         PosterList(
-          list: widget.list,
+          list: list,
           startIndex: 0,
         ),
         PosterList(
-          list:  widget.list,
+          list: list,
           startIndex: 1,
         ),
         PosterList(
-          list:  widget.list,
+          list: list,
           startIndex: 2,
         ),
       ],
