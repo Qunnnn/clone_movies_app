@@ -40,19 +40,17 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
-        child: Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const UpcomingMovie(),
-                const TrendingMovie(),
-                const TopRatedMovie(),
-                const PopularTv(),
-                SizedBox(
-                  height: 5.h,
-                ),
-              ],
-            ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const UpcomingMovie(),
+              const TrendingMovie(),
+              const TopRatedMovie(),
+              const PopularTv(),
+              SizedBox(
+                height: 5.h,
+              ),
+            ],
           ),
         ),
       ),
