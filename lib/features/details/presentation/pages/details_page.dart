@@ -220,18 +220,6 @@ class _DetailsPageState extends State<DetailsPage> {
                               ],
                             ),
                             const CastWidget(),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Trailer',
-                                  style: topicStyle.copyWith(
-                                      color: Colors.black,
-                                      fontSize: 20.sp,
-                                      letterSpacing: -0.5),
-                                ),
-                              ],
-                            ),
                             SizedBox(
                               height: 5.h,
                             ),

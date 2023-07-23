@@ -75,24 +75,21 @@ class _WelcomeState extends State<Welcome> {
                   Text(
                     'Welcome',
                     style: TextStyle(
-                        color: Colors.white,
-                        fontFamily: 'Dongle',
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25.sp,
-                        height: 1),
+                      color: Colors.white,
+                      fontFamily: 'Dongle',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25.sp,
+                    ),
                   ),
-                  SizedBox(
-                    height: 5.h,
-                    width: MediaQuery.of(context).size.width,
+                  ConstrainedBox(
+                    constraints: BoxConstraints(maxWidth: 80.w),
                     child: Text(
                       'Millions of movies, TV shows and people to discover. Explore now.',
                       style: TextStyle(
-                        overflow: TextOverflow.ellipsis,
                         color: Colors.white,
                         fontFamily: 'Dongle',
                         fontWeight: FontWeight.bold,
                         fontSize: 14.sp,
-                        height: 1,
                       ),
                     ),
                   ),
