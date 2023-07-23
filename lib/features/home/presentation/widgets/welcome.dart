@@ -75,6 +75,7 @@ class _WelcomeState extends State<Welcome> {
                   Text(
                     'Welcome',
                     style: TextStyle(
+                      height: 1,
                       color: Colors.white,
                       fontFamily: 'Dongle',
                       fontWeight: FontWeight.bold,
@@ -86,6 +87,7 @@ class _WelcomeState extends State<Welcome> {
                     child: Text(
                       'Millions of movies, TV shows and people to discover. Explore now.',
                       style: TextStyle(
+                        height: 1,
                         color: Colors.white,
                         fontFamily: 'Dongle',
                         fontWeight: FontWeight.bold,
