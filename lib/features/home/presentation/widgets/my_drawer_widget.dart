@@ -64,8 +64,7 @@ class MyDrawer extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 25.w),
             child: GestureDetector(
               onTap: () async {
-                LocalStorageService localStorageService = LocalStorageService();
-                localStorageService.delete(key: statusLoginKey);
+                LocalStorageService.instance.delete(key: statusLoginKey);
                 await AppPages.getStatusLogin();
                 Navigator.pushReplacementNamed(context, AppRoutes.Initial);
               },

@@ -2,6 +2,11 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorageService {
+  LocalStorageService._internal();
+  static final LocalStorageService _localStorageService =
+      LocalStorageService._internal();
+  static LocalStorageService get instance => _localStorageService;
+
   final defaultData = <String, dynamic>{
     'hour': 0,
     'minute': 0,

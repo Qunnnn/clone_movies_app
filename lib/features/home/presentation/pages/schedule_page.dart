@@ -15,7 +15,6 @@ class SchedulePage extends StatefulWidget {
 
 class _SchedulePageState extends State<SchedulePage> {
   TimeOfDay time = TimeOfDay.now();
-  LocalStorageService localStorageService = LocalStorageService();
   late bool activeNoti;
   late ScheduleDailyDetails scheduleDailyDetails;
 
@@ -49,7 +48,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
   getScheduleStatus() async {
     activeNoti =
-        await localStorageService.readStatus(key: 'notificationStatus') ??
+        await LocalStorageService.instance.readStatus(key: 'notificationStatus') ??
             false;
     setState(() {
       activeNoti;
@@ -59,7 +58,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
   Future<ScheduleDailyDetails> updateScheduleTime() async {
     ScheduleDailyDetails scheduleDailyDetails =
-        ScheduleDailyDetails.fromJson(await localStorageService.readSchedule());
+        ScheduleDailyDetails.fromJson(await LocalStorageService.instance.readSchedule());
     return scheduleDailyDetails;
   }
 
@@ -143,7 +142,7 @@ class _SchedulePageState extends State<SchedulePage> {
                     time = newTime;
                     scheduleDailyDetails =
                         ScheduleDailyDetails(time.hour, time.minute , true);
-                    localStorageService.saveSchedule(scheduleDailyDetails);
+                    LocalStorageService.instance.saveSchedule(scheduleDailyDetails);
                     setNoti();
                   });
                 },
@@ -200,7 +199,7 @@ class _SchedulePageState extends State<SchedulePage> {
                       Switch(
                         value: activeNoti,
                         onChanged: (value) {
-                          localStorageService.writeStatus(
+                          LocalStorageService.instance.writeStatus(
                               key: 'notificationStatus', status: value);
                           getScheduleStatus();
                         },
@@ -211,9 +210,9 @@ class _SchedulePageState extends State<SchedulePage> {
                       GestureDetector(
                         onTap: () {
                           NotificationService.instance.cancelNotification(id: 1);
-                          localStorageService.delete(
+                          LocalStorageService.instance.delete(
                               key: "scheduleDailyDetails");
-                          localStorageService.delete(key: "notificationStatus");
+                          LocalStorageService.instance.delete(key: "notificationStatus");
                           setState(() {
                             updateScheduleTime();
                             getScheduleStatus();

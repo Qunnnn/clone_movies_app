@@ -10,9 +10,8 @@ import 'package:flutter/material.dart';
 class AppPages {
   static late bool isLoggedIn;
   static getStatusLogin() async {
-    LocalStorageService localStorageService = LocalStorageService();
     isLoggedIn =
-        await localStorageService.readStatus(key: statusLoginKey) ?? false;
+        await LocalStorageService.instance.readStatus(key: statusLoginKey) ?? false;
   }
 
   static List<PageEntity> routes = [

@@ -91,9 +91,7 @@ class _IntroPageState extends State<IntroPage> {
                               if (_formKey.currentState!.validate()) {
                                 if (emailController.text == 'admin@gmail.com' &&
                                     passwordController.text == "20092001") {
-                                  LocalStorageService localStorageService =
-                                      LocalStorageService();
-                                  localStorageService.writeStatus(
+                                  LocalStorageService.instance.writeStatus(
                                       key: statusLoginKey, status: true);
                                   Navigator.pushReplacementNamed(
                                       context, AppRoutes.HomePage);
