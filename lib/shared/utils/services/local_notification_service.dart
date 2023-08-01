@@ -5,11 +5,16 @@ import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest_all.dart' as tz;
 
 class NotificationService {
-  NotificationService();
+  NotificationService._internal();
+  static final NotificationService _notificationService =
+      NotificationService._internal();
+  static NotificationService get instance => _notificationService;
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
   final StreamController streamController = StreamController();
+
   Stream get getStream => streamController.stream;
+
   Future<void> intialize() async {
     tz.initializeTimeZones();
     const AndroidInitializationSettings androidInitializationSettings =
@@ -137,13 +142,11 @@ class NotificationService {
     final String? payload = notificationResponse.payload;
     if (payload != null && payload.isNotEmpty) {
       debugPrint('notification payload: $payload');
-       streamController.sink.add(payload);
-       
-
+      streamController.sink.add(payload);
     }
   }
 
-  close(){
+  close() {
     streamController.close();
   }
 }

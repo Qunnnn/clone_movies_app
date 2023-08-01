@@ -14,7 +14,6 @@ class SchedulePage extends StatefulWidget {
 }
 
 class _SchedulePageState extends State<SchedulePage> {
-  final NotificationService _notificationService = NotificationService();
   TimeOfDay time = TimeOfDay.now();
   LocalStorageService localStorageService = LocalStorageService();
   late bool activeNoti;
@@ -35,7 +34,7 @@ class _SchedulePageState extends State<SchedulePage> {
 
   setNoti() {
     if (activeNoti == true) {
-      _notificationService.scheduleDailyNotification(
+      NotificationService.instance.scheduleDailyNotification(
         id: 1,
         title: 'Schedule',
         body: 'It\'s time for movie!',
@@ -44,7 +43,7 @@ class _SchedulePageState extends State<SchedulePage> {
         payload: '550',
       );
     } else {
-      _notificationService.cancelNotification(id: 1);
+      NotificationService.instance.cancelNotification(id: 1);
     }
   }
 
@@ -68,14 +67,14 @@ class _SchedulePageState extends State<SchedulePage> {
   void initState() {
     getSystemTime();
     getScheduleStatus();
-    _notificationService.intialize();
+    NotificationService.instance.intialize();
     super.initState();
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
-    _notificationService.close();
+    NotificationService.instance.close();
     // mySub.cancel();
     super.dispose();
   }
@@ -211,7 +210,7 @@ class _SchedulePageState extends State<SchedulePage> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          _notificationService.cancelNotification(id: 1);
+                          NotificationService.instance.cancelNotification(id: 1);
                           localStorageService.delete(
                               key: "scheduleDailyDetails");
                           localStorageService.delete(key: "notificationStatus");
